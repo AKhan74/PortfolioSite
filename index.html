@@ -1,92 +1,441 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AKhan — Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ============ SEO: edita o título e a descrição ============ -->
+  <title>Rui Marques — Creative Generalist</title>
+  <meta name="description" content="Portefólio de Rui Marques — 3D, game design, ilustração e UI design." />
+  <meta name="theme-color" content="#242320" />
+
+  <!-- Tipos de letra (Geist). Se preferires, podes remover e usar as fontes do sistema. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Barra de progresso do scroll no topo -->
-  <div class="scroll-progress"></div>
+  <!-- ============================================================ -->
+  <!-- NAVEGAÇÃO                                                     -->
+  <!-- ============================================================ -->
+  <header class="nav">
+    <nav class="nav__inner">
+      <a href="#top" class="nav__brand">
+        <!-- O TEU NOME AQUI -->
+        <span class="nav__name">Rui Marques</span>
+        <span class="nav__role">Creative Generalist</span>
+      </a>
 
-  <!-- Cabeçalho -->
-  <header class="header">
-    <a href="#" class="logo">akhan74</a>
-    <nav>
-      <a href="#projetos">Projetos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contacto" class="btn-nav">Contacto</a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#work">Trabalho</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#experience">Percurso</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+
+      <a href="#contact" class="nav__badge">Disponível</a>
+
+      <button type="button" class="nav__toggle" id="navToggle" aria-label="Alternar menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
     </nav>
+
+    <!-- Menu mobile (aparece ao clicar no botão) -->
+    <ul class="nav__mobile" id="navMobile" hidden>
+      <li><a href="#work">Trabalho</a></li>
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#experience">Percurso</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
   </header>
 
-  <main>
-    <!-- Secção Inicial (Hero) -->
+  <main id="top">
+
+    <!-- ============================================================ -->
+    <!-- HERO (secção de topo)                                        -->
+    <!-- ============================================================ -->
     <section class="hero">
-      <h1>Game Dev & Creator</h1>
-      <p>A criar experiências interativas, pixel art e projetos focados em detalhe.</p>
+      <p class="eyebrow"><span class="dot">&#9679;</span> Disponível para projetos &middot; 2026</p>
+
+      <!-- TÍTULO PRINCIPAL -->
+      <h1 class="hero__title">Desenho mundos, personagens e interfaces.</h1>
+
+      <!-- PARÁGRAFO DE INTRODUÇÃO -->
+      <p class="hero__text">
+        Sou o Rui — criativo multidisciplinar a trabalhar entre o 3D, o design de
+        jogos, a ilustração e o design de produto. Junto o rigor técnico à
+        sensibilidade visual.
+      </p>
+
+      <div class="hero__disciplines">
+        <span>3D Generalist</span>
+        <span>Game Design</span>
+        <span>Ilustração</span>
+        <span>UI Design</span>
+      </div>
     </section>
 
-    <!-- Galeria de Projetos -->
-    <section id="projetos" class="projects-section">
-      <h2>Projetos em Destaque</h2>
-      
-      <div class="projects-grid">
-        
-        <!-- Cartão de Projeto 1 -->
-        <article class="project-card">
-          <div class="card-image">
-            <img src="https://via.placeholder.com/600x400" alt="Capa do Projeto 1">
-          </div>
-          <div class="card-content">
-            <span class="tag">Pixel Art / Game Dev</span>
-            <h3>Nome do Projeto 1</h3>
-            <p>Breve descrição do projeto. O que é, que problema resolveu ou que ferramentas usaste.</p>
-            <a href="#" class="card-link">Ver detalhes &rarr;</a>
-          </div>
-        </article>
+    <!-- ============================================================ -->
+    <!-- GALERIA DE TRABALHO                                          -->
+    <!-- Para adicionar/editar projetos, muda os data-* e as imagens. -->
+    <!-- ============================================================ -->
+    <section id="work" class="section">
+      <div class="section__head">
+        <div>
+          <p class="eyebrow">Selecção</p>
+          <h2 class="section__title">Trabalho recente</h2>
+        </div>
 
-        <!-- Cartão de Projeto 2 -->
-        <article class="project-card">
-          <div class="card-image">
-            <img src="https://via.placeholder.com/600x400" alt="Capa do Projeto 2">
-          </div>
-          <div class="card-content">
-            <span class="tag">3D / Shaders</span>
-            <h3>Nome do Projeto 2</h3>
-            <p>Explicação concisa do teu papel neste projeto e o impacto final.</p>
-            <a href="#" class="card-link">Ver detalhes &rarr;</a>
-          </div>
-        </article>
+        <!-- Botões de filtro -->
+        <div class="filters" id="filters">
+          <button type="button" class="filter is-active" data-filter="Todos">Todos</button>
+          <button type="button" class="filter" data-filter="3D">3D</button>
+          <button type="button" class="filter" data-filter="Game Design">Game Design</button>
+          <button type="button" class="filter" data-filter="Ilustração">Ilustração</button>
+          <button type="button" class="filter" data-filter="UI">UI</button>
+        </div>
+      </div>
 
-        <!-- Cartão de Projeto 3 -->
-        <article class="project-card">
-          <div class="card-image">
-            <img src="https://via.placeholder.com/600x400" alt="Capa do Projeto 3">
+      <!--
+        GRID DE PROJETOS
+        Cada projeto é um <button class="card">.
+        - data-category: 3D | Game Design | Ilustração | UI  (tem de ser igual ao filtro)
+        - A classe "card--wide" faz o projeto ocupar a largura toda (destaque).
+        - Os atributos data-* alimentam a janela de detalhe (lightbox).
+      -->
+      <div class="grid" id="grid">
+
+        <!-- PROJETO 1 (destaque) -->
+        <button type="button" class="card card--wide" data-category="3D"
+          data-title="Nebula Corridor" data-role="Environment Artist" data-year="2025"
+          data-desc="Ambiente cinematográfico de ficção científica explorando iluminação volumétrica e atmosfera. Modelação, texturização e composição de luz feitas do zero."
+          data-tags="Blender, Substance, Octane"
+          data-image="images/3d-environment.png">
+          <div class="card__media card__media--wide">
+            <img src="images/3d-environment.png" alt="Nebula Corridor" />
           </div>
-          <div class="card-content">
-            <span class="tag">Web / UI Design</span>
-            <h3>Nome do Projeto 3</h3>
-            <p>Mais um projeto em destaque para mostrar variedade de competências.</p>
-            <a href="#" class="card-link">Ver detalhes &rarr;</a>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Nebula Corridor</h3>
+              <p class="card__role">Environment Artist</p>
+            </div>
+            <span class="card__tag">3D &middot; 2025</span>
           </div>
-        </article>
+        </button>
+
+        <!-- PROJETO 2 -->
+        <button type="button" class="card" data-category="3D"
+          data-title="Sentinel Unit" data-role="Character Artist" data-year="2024"
+          data-desc="Render de personagem robótico com foco em materiais, subsurface e iluminação de estúdio. Concebido como peça de portefólio para hard-surface."
+          data-tags="ZBrush, Blender, Marmoset"
+          data-image="images/3d-character.png">
+          <div class="card__media">
+            <img src="images/3d-character.png" alt="Sentinel Unit" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Sentinel Unit</h3>
+              <p class="card__role">Character Artist</p>
+            </div>
+            <span class="card__tag">3D &middot; 2024</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 3 -->
+        <button type="button" class="card" data-category="Game Design"
+          data-title="Skybound" data-role="Level &amp; World Design" data-year="2025"
+          data-desc="Conceito de mundo flutuante para um jogo de aventura isométrico. Design de nível, ritmo de exploração e direção de arte low-poly."
+          data-tags="Unity, Level Design, Concept"
+          data-image="images/game-world.png">
+          <div class="card__media">
+            <img src="images/game-world.png" alt="Skybound" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Skybound</h3>
+              <p class="card__role">Level &amp; World Design</p>
+            </div>
+            <span class="card__tag">Game Design &middot; 2025</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 4 (destaque) -->
+        <button type="button" class="card card--wide" data-category="Game Design"
+          data-title="Aether HUD" data-role="UX / Systems Design" data-year="2024"
+          data-desc="Sistema de HUD diegético para um jogo de ação sci-fi. Hierarquia de informação, feedback de combate e legibilidade em cenários escuros."
+          data-tags="Figma, Game UX, Prototyping"
+          data-image="images/game-ui.png">
+          <div class="card__media card__media--wide">
+            <img src="images/game-ui.png" alt="Aether HUD" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Aether HUD</h3>
+              <p class="card__role">UX / Systems Design</p>
+            </div>
+            <span class="card__tag">Game Design &middot; 2024</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 5 -->
+        <button type="button" class="card" data-category="Ilustração"
+          data-title="The Wanderer" data-role="Illustration" data-year="2025"
+          data-desc="Ilustração de personagem com abordagem pictórica e iluminação dramática. Estudo de silhueta, cor e narrativa numa única imagem."
+          data-tags="Procreate, Photoshop"
+          data-image="images/illustration-character.png">
+          <div class="card__media">
+            <img src="images/illustration-character.png" alt="The Wanderer" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">The Wanderer</h3>
+              <p class="card__role">Illustration</p>
+            </div>
+            <span class="card__tag">Ilustração &middot; 2025</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 6 -->
+        <button type="button" class="card" data-category="Ilustração"
+          data-title="Dream Machine" data-role="Editorial Illustration" data-year="2024"
+          data-desc="Poster editorial surreal com paleta limitada e composição gráfica forte. Explora contraste entre forma e vazio."
+          data-tags="Illustration, Poster, Editorial"
+          data-image="images/illustration-poster.png">
+          <div class="card__media">
+            <img src="images/illustration-poster.png" alt="Dream Machine" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Dream Machine</h3>
+              <p class="card__role">Editorial Illustration</p>
+            </div>
+            <span class="card__tag">Ilustração &middot; 2024</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 7 (destaque) -->
+        <button type="button" class="card card--wide" data-category="UI"
+          data-title="Pulse" data-role="Product Designer" data-year="2025"
+          data-desc="Design de app mobile em dark mode com foco em tipografia, ritmo e microinterações. Do fluxo à entrega de UI de alta fidelidade."
+          data-tags="Figma, Design System, Mobile"
+          data-image="images/ui-mobile.png">
+          <div class="card__media card__media--wide">
+            <img src="images/ui-mobile.png" alt="Pulse" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pulse</h3>
+              <p class="card__role">Product Designer</p>
+            </div>
+            <span class="card__tag">UI &middot; 2025</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 8 -->
+        <button type="button" class="card" data-category="UI"
+          data-title="Atlas" data-role="Product Designer" data-year="2024"
+          data-desc="Dashboard de analítica com visualização de dados clara e densa. Sistema de componentes escalável e legível em contexto escuro."
+          data-tags="Figma, Data Viz, Web"
+          data-image="images/ui-dashboard.png">
+          <div class="card__media">
+            <img src="images/ui-dashboard.png" alt="Atlas" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Atlas</h3>
+              <p class="card__role">Product Designer</p>
+            </div>
+            <span class="card__tag">UI &middot; 2024</span>
+          </div>
+        </button>
 
       </div>
     </section>
 
-    <!-- Secção Sobre -->
-    <section id="sobre" class="about-section">
-      <h2>Sobre Mim</h2>
-      <p>Um parágrafo simples e direto a explicar a tua paixão, stack tecnológica e o que procuras fazer neste momento.</p>
+    <!-- ============================================================ -->
+    <!-- SOBRE MIM                                                    -->
+    <!-- ============================================================ -->
+    <section id="about" class="section">
+      <div class="about">
+        <div class="about__photo">
+          <!-- A TUA FOTO: substitui images/portrait.png -->
+          <img src="images/portrait.png" alt="Retrato de Rui Marques" />
+        </div>
+
+        <div class="about__body">
+          <p class="eyebrow">Sobre</p>
+          <h2 class="about__title">Um só criativo, quatro disciplinas que se alimentam entre si.</h2>
+
+          <div class="about__text">
+            <p>
+              Trabalho na interseção entre a arte e a técnica. Modelo e ilumino
+              cenas em 3D, desenho sistemas e mundos para jogos, ilustro
+              personagens e desenho interfaces que as pessoas gostam de usar.
+            </p>
+            <p>
+              Acredito que compreender o processo completo — da forma ao código,
+              do conceito à entrega — leva a resultados mais coerentes e
+              intencionais. O minimalismo é a minha ferramenta para deixar o
+              trabalho respirar.
+            </p>
+          </div>
+
+          <div class="about__skills">
+            <p class="eyebrow">Ferramentas</p>
+            <ul class="tags">
+              <li>Blender</li>
+              <li>ZBrush</li>
+              <li>Substance Painter</li>
+              <li>Unity</li>
+              <li>Figma</li>
+              <li>Procreate</li>
+              <li>Photoshop</li>
+              <li>After Effects</li>
+              <li>Concept Art</li>
+              <li>Design Systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- ============================================================ -->
+    <!-- PERCURSO / EXPERIÊNCIA                                       -->
+    <!-- ============================================================ -->
+    <section id="experience" class="section">
+      <div class="exp">
+        <p class="eyebrow">Percurso</p>
+        <h2 class="section__title">Experiência &amp; formação</h2>
+
+        <ul class="exp__list">
+          <li class="exp__item">
+            <span class="exp__period">2023 — Presente</span>
+            <div class="exp__detail">
+              <div>
+                <h3>Freelance Multidisciplinar</h3>
+                <p class="exp__company">Independente</p>
+              </div>
+              <p class="exp__desc">Projetos de 3D, game design, ilustração e UI para estúdios e startups internacionais.</p>
+            </div>
+          </li>
+          <li class="exp__item">
+            <span class="exp__period">2021 — 2023</span>
+            <div class="exp__detail">
+              <div>
+                <h3>3D Artist &amp; Game Designer</h3>
+                <p class="exp__company">Nova Studio</p>
+              </div>
+              <p class="exp__desc">Criação de ambientes, personagens e sistemas de jogo para títulos indie premiados.</p>
+            </div>
+          </li>
+          <li class="exp__item">
+            <span class="exp__period">2019 — 2021</span>
+            <div class="exp__detail">
+              <div>
+                <h3>Product / UI Designer</h3>
+                <p class="exp__company">Field Labs</p>
+              </div>
+              <p class="exp__desc">Design de produtos digitais, design systems e prototipagem para apps mobile e web.</p>
+            </div>
+          </li>
+          <li class="exp__item">
+            <span class="exp__period">2015 — 2019</span>
+            <div class="exp__detail">
+              <div>
+                <h3>Licenciatura em Design</h3>
+                <p class="exp__company">Universidade</p>
+              </div>
+              <p class="exp__desc">Formação em comunicação visual, ilustração e fundamentos de design de interação.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CONTACTO                                                     -->
+    <!-- ============================================================ -->
+    <section id="contact" class="section">
+      <div class="contact">
+        <div class="contact__left">
+          <p class="eyebrow">Contacto</p>
+          <h2 class="contact__title">Vamos criar algo juntos.</h2>
+          <!-- O TEU EMAIL -->
+          <a href="mailto:ola@ruimarques.com" class="contact__email">
+            ola@ruimarques.com
+            <span class="arrow" aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+
+        <!-- AS TUAS REDES: muda o href e o texto -->
+        <ul class="socials">
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <span class="socials__label">Instagram</span>
+              <span class="socials__handle">@ruimarques <span class="arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://artstation.com" target="_blank" rel="noopener noreferrer">
+              <span class="socials__label">ArtStation</span>
+              <span class="socials__handle">ruimarques <span class="arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <span class="socials__label">LinkedIn</span>
+              <span class="socials__handle">in/ruimarques <span class="arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">
+              <span class="socials__label">Dribbble</span>
+              <span class="socials__handle">ruimarques <span class="arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+      <p>&copy; 2026 Rui Marques</p>
+      <p>Feito com intenção &middot; Lisboa</p>
+    </footer>
+
   </main>
 
-  <!-- Rodapé -->
-  <footer id="contacto">
-    <p>&copy; 2026 akhan74. Criado com HTML & CSS puro.</p>
-  </footer>
+  <!-- ============================================================ -->
+  <!-- LIGHTBOX (janela de detalhe do projeto) — não precisa editar -->
+  <!-- ============================================================ -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Fechar">&times;</button>
+    <div class="lightbox__inner" id="lightboxInner">
+      <div class="lightbox__media">
+        <img id="lbImage" src="" alt="" />
+      </div>
+      <div class="lightbox__body">
+        <p class="lightbox__category" id="lbCategory"></p>
+        <h3 class="lightbox__title" id="lbTitle"></h3>
+        <dl class="lightbox__facts">
+          <div>
+            <dt>Função</dt>
+            <dd id="lbRole"></dd>
+          </div>
+          <div>
+            <dt>Ano</dt>
+            <dd id="lbYear"></dd>
+          </div>
+        </dl>
+        <p class="lightbox__desc" id="lbDesc"></p>
+        <div class="tags tags--mono" id="lbTags"></div>
+      </div>
+    </div>
+  </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
