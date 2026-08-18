@@ -168,12 +168,18 @@ ul {
   background: var(--foreground);
 }
 
+/* Escondido por padrão no mobile */
 .nav__mobile {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0.25rem;
   border-top: 1px solid var(--border);
   padding: 1rem 1.5rem;
+}
+
+/* Visível apenas quando tem a classe .is-open */
+.nav__mobile.is-open {
+  display: flex;
 }
 
 .nav__mobile a {
