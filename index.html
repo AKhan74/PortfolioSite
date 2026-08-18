@@ -51,6 +51,30 @@
       <li><a href="#contact">Contacts</a></li>
     </ul>
   </header>
+  <script>
+  const navToggle = document.getElementById('navToggle');
+  const navMobile = document.getElementById('navMobile');
+
+  navToggle.addEventListener('click', () => {
+    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+    
+    navToggle.setAttribute('aria-expanded', !isExpanded);
+    
+    if (isExpanded) {
+      navMobile.setAttribute('hidden', '');
+    } else {
+      navMobile.removeAttribute('hidden');
+    }
+  });
+
+  // Esconde o menu ao clicar em qualquer link do menu mobile
+  navMobile.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.setAttribute('aria-expanded', 'false');
+      navMobile.setAttribute('hidden', '');
+    });
+  });
+</script>
 
   <main id="top">
 
