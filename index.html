@@ -51,27 +51,28 @@
       <li><a href="#contact">Contacts</a></li>
     </ul>
   </header>
+
   <script>
-  const navToggle = document.getElementById('navToggle');
-  const navMobile = document.getElementById('navMobile');
+  document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
 
-  navToggle.addEventListener('click', () => {
-    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-    
-    navToggle.setAttribute('aria-expanded', !isExpanded);
-    
-    if (isExpanded) {
-      navMobile.setAttribute('hidden', '');
-    } else {
-      navMobile.removeAttribute('hidden');
-    }
-  });
+    if (!navToggle || !navMobile) return;
 
-  // Esconde o menu ao clicar em qualquer link do menu mobile
-  navMobile.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.setAttribute('aria-expanded', 'false');
-      navMobile.setAttribute('hidden', '');
+    navToggle.addEventListener('click', () => {
+      // Alterna a classe 'is-open' no menu mobile
+      const isOpen = navMobile.classList.toggle('is-open');
+      
+      // Atualiza a acessibilidade
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Esconde o menu ao clicar em qualquer link
+    navMobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMobile.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
     });
   });
 </script>
