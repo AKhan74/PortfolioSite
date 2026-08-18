@@ -241,6 +241,14 @@ ul {
   letter-spacing: 0.15em;
   color: var(--muted-foreground);
 }
+/* Ajusta a imagem à altura exata do texto onde está inserida */
+.hero__inline-img {
+  display: inline-block;
+  height: 1em;             /* Herda a altura da linha de texto atual */
+  width: auto;             /* Mantém as proporções da imagem */
+  vertical-align: -0.12em; /* Alinha perfeitamente com a linha de base das letras */
+  margin: 0 0.25em;        /* Dá um pequeno espaço para não colar nas palavras */
+  object-fit: contain;
 
 /* ============================================================
    SECÇÕES GENÉRICAS
