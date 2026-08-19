@@ -327,7 +327,8 @@ ul {
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--card);
+  background: #000000;
+   
 }
 
 .card__media img {
