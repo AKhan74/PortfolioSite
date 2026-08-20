@@ -241,14 +241,19 @@ ul {
   letter-spacing: 0.15em;
   color: var(--muted-foreground);
 }
-/* Centra apenas esta secção hero específica */
-.hero--centered {
+/* Centra apenas o contentor do logo */
+.hero__brand-logo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  min-height: 80vh;
   justify-content: center;
+  width: 100%;
+  margin-bottom: 2.5rem;   /* Espaço entre o logo e o texto abaixo */
+}
+
+/* Tamanho do logo */
+.hero__brand-logo img {
+  width: auto;
+  max-height: 220px;       /* Ajusta este valor se quiseres a imagem maior ou menor */
+  height: auto;
 }
 
 /* Controla o tamanho e margem do logo */
