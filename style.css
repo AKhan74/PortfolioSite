@@ -199,24 +199,26 @@ ul {
 /* ============================================================
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
-/* Ajusta a secção para ocupar 80% exatos da altura do ecrã */
-/* 2. Força a secção do logo a ter exatamente 80% da altura da janela */
+/* Centraliza e permite ajustar o ecrã inicial */
 .brand-landing {
   display: flex !important;
   justify-content: center !important;
-  align-items: center !important;
+  align-items: flex-start !important; /* Muda de center para flex-start */
   height: 80vh !important;
-  min-height: 80vh !important;
-  max-height: 80vh !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  padding-top: 10vh !important;       /* Posiciona o logo a 10% do topo do ecrã */
 }
 
-/* 3. Ajusta a imagem do logo dentro dos 80vh */
+/* Controla o alinhamento e o tamanho da div interna */
+.brand-landing__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tamanho do logo */
 .brand-landing__logo img {
   width: auto !important;
-  max-height: 40vh !important; /* Faz o logo ocupar até 40% da altura do ecrã */
+  max-height: 280px !important;       /* Ajusta este valor para o tamanho ideal */
   display: block !important;
 }
 header.nav {
