@@ -199,39 +199,28 @@ ul {
 /* ============================================================
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
-/* Força a secção a romper limites de max-width e ocupar 100% do ecrã */
-/* 1. O container principal: Centra TUDO e define o espaço */
 .brand-landing {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Centra verticalmente */
-  width: 100vw;
-  height: 80vh;
-  margin: 0;
-  padding: 0;
-  /* Cria uma margem de segurança no topo do container para evitar colisões com o header fixo */
-  padding-top: 100px; /* Ajusta conforme necessário para o teu header */
-  box-sizing: border-box; /* Crucial para o padding-top não aumentar a altura */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 80vh !important;          /* Ocupa 80% da altura da página */
+  padding-top: 60px !important;     /* Espaço de segurança para a nav */
+  box-sizing: border-box !important;
 }
 
-/* 2. O wrapper da logo: Ajuda na centralização */
-.brand-landing_logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%; /* Ocupa todo o espaço útil, já com o padding superior */
+.brand-landing__logo {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
-/* 3. A imagem: Tamanho controlado e responsivo */
-.brand-landing_logo img {
-  display: block;
-  width: auto;
-  /* Define uma altura máxima segura que não colide com o topo nem com o fundo */
-  height: auto;
-  max-height: 100%; /* Ocupa no máximo a altura total do wrapper */
-  max-width: 80%; /* Garante que não ultrapassa as margens do ecrã */
-  /* Remove qualquer max-height fixo que possa estar noutra regra */
+/* É AQUI QUE CONTROLAS O TAMANHO REAL DA CAVEIRA */
+.brand-landing__logo img {
+  width: auto !important;
+  height: 320px !important;         /* Define um tamanho fixo e controlado */
+  max-height: 45vh !important;      /* Impede que ocupe mais de metade do ecrã */
+  object-fit: contain !important;
 }
 header.nav {
   position: absolute !important;
