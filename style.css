@@ -199,18 +199,31 @@ ul {
 /* ============================================================
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
+/* Ajusta a secção para ocupar 80% exatos da altura do ecrã */
 .brand-landing {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh; /* Ocupa exatamente 80% da altura da ecrã */
+  height: 80vh;              /* Define a altura exata para 80% do ecrã */
   width: 100%;
+  padding-top: 60px;         /* Compensa o menu superior para o logo ficar visualmente centrado no espaço útil */
 }
-
+.brand-landing__logo img {
+  width: auto;
+  max-height: clamp(180px, 30vh, 360px);
+  display: block;
+}
 .brand-landing__logo img {
   width: auto;
   max-height: clamp(200px, 35vh, 420px);
   display: block;
+}
+header.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 /* ============================================================
    HERO (Texto que fica logo abaixo ao fazer scroll)
