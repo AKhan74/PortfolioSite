@@ -199,13 +199,21 @@ ul {
 /* ============================================================
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
+/* BRAND LANDING (Força a largura total do ecrã) */
 .brand-landing {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  width: 100% !important;
-  height: 80vh !important;          /* Ocupa 80% da altura da página */
-  padding-top: 60px !important;     /* Espaço de segurança para a nav */
+  
+  /* ESTES 5 CAMPOS FAZEM A LARGURA SAIR DA CAIXA: */
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: relative !important;
+  left: 50% !important;
+  margin-left: -50vw !important;
+  
+  height: 80vh !important;
+  padding-top: 60px !important;
   box-sizing: border-box !important;
 }
 
@@ -213,15 +221,17 @@ ul {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+  width: 100% !important;
 }
 
-/* É AQUI QUE CONTROLAS O TAMANHO REAL DA CAVEIRA */
+/* TAMANHO DO LOGO */
 .brand-landing__logo img {
   width: auto !important;
-  height: 320px !important;         /* Define um tamanho fixo e controlado */
-  max-height: 45vh !important;      /* Impede que ocupe mais de metade do ecrã */
+  height: 55vh !important;         /* Aumenta/diminui esta percentagem para escalar o logo */
+  max-width: 90vw !important;       /* Garante que não sai das bordas da janela */
   object-fit: contain !important;
 }
+
 header.nav {
   position: absolute !important;
   top: 0 !important;
