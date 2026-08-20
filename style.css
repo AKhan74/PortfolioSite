@@ -200,36 +200,38 @@ ul {
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
 /* Força a secção a romper limites de max-width e ocupar 100% do ecrã */
+/* 1. O container principal: Centra TUDO e define o espaço */
 .brand-landing {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
-    position: relative !important;
-    left: 50% !important;
-    right: 50% !important;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-    height: 80vh !important;
-    padding-top: 80px !important; /* Evita que o conteúdo cole na nav */
-    box-sizing: border-box !important;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra verticalmente */
+  width: 100vw;
+  height: 80vh;
+  margin: 0;
+  padding: 0;
+  /* Cria uma margem de segurança no topo do container para evitar colisões com o header fixo */
+  padding-top: 100px; /* Ajusta conforme necessário para o teu header */
+  box-sizing: border-box; /* Crucial para o padding-top não aumentar a altura */
 }
 
-/* Permite que o logo escale sem restrições de caixas estreitas */
-.brand-landing__logo {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 100% !important;
+/* 2. O wrapper da logo: Ajuda na centralização */
+.brand-landing_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; /* Ocupa todo o espaço útil, já com o padding superior */
 }
 
-/* Redimensiona o logo proporcionalmente */
+/* 3. A imagem: Tamanho controlado e responsivo */
 .brand-landing_logo img {
-    width: auto !important;
-    max-height: calc(80vh - 100px) !important; /* Desconta o espaço do header */
-    max-width: 80% !important;
-    object-fit: contain !important;
+  display: block;
+  width: auto;
+  /* Define uma altura máxima segura que não colide com o topo nem com o fundo */
+  height: auto;
+  max-height: 100%; /* Ocupa no máximo a altura total do wrapper */
+  max-width: 80%; /* Garante que não ultrapassa as margens do ecrã */
+  /* Remove qualquer max-height fixo que possa estar noutra regra */
 }
 header.nav {
   position: absolute !important;
