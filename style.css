@@ -254,7 +254,7 @@ ul {
 /* Controla o tamanho e margem do logo */
 .hero__brand-logo img {
   width: auto;
-  max-height: 180px;         /* Aumenta ou diminui este valor para ajustar o tamanho */
+  max-height: 500px;         /* Aumenta ou diminui este valor para ajustar o tamanho */
   margin-bottom: 2rem;
   display: block;
 }
