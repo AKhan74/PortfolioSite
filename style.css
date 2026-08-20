@@ -241,26 +241,25 @@ ul {
   letter-spacing: 0.15em;
   color: var(--muted-foreground);
 }
-
 /* Centra apenas esta secção hero específica */
 .hero--centered {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 80vh;          /* Ocupa a grande maioria da ecrã (landing page) */
-  justify-content: center;   /* Centraliza o conteúdo verticalmente */
+  min-height: 80vh;
+  justify-content: center;
 }
 
 /* Controla o tamanho e margem do logo */
 .hero__brand-logo img {
   width: auto;
-  max-height: 80px;          /* Ajusta a altura do logo a teu gosto */
-  margin-bottom: 2rem;       /* Espaço entre o logo e o texto 'Available' */
+  max-height: 180px;         /* Aumenta ou diminui este valor para ajustar o tamanho */
+  margin-bottom: 2rem;
   display: block;
 }
 
-/* Garante que os elementos com flex interno também ficam centrados */
+/* Centraliza os elementos flex internos */
 .hero--centered .eyebrow,
 .hero--centered .hero__disciplines {
   justify-content: center;
