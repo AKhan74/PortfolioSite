@@ -199,37 +199,19 @@ ul {
 /* ============================================================
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
-/* BRAND LANDING (Força a largura total do ecrã) */
-.brand-landing {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  
-  /* ESTES 5 CAMPOS FAZEM A LARGURA SAIR DA CAIXA: */
-  width: 100vw !important;
-  max-width: 100vw !important;
-  position: relative !important;
-  left: 50% !important;
-  margin-left: -50vw !important;
-  
-  height: 80vh !important;
-  padding-top: 60px !important;
-  box-sizing: border-box !important;
+/* Centra apenas o contentor do logo */
+.hero__brand-logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2.5rem;   /* Espaço entre o logo e o texto abaixo */
 }
 
-.brand-landing__logo {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 100% !important;
-}
-
-/* TAMANHO DO LOGO */
-.brand-landing__logo img {
-  width: auto !important;
-  height: 55vh !important;         /* Aumenta/diminui esta percentagem para escalar o logo */
-  max-width: 90vw !important;       /* Garante que não sai das bordas da janela */
-  object-fit: contain !important;
+/* Tamanho do logo */
+.hero__brand-logo img {
+  width: auto;
+  max-height: 220px;       /* Ajusta este valor se quiseres a imagem maior ou menor */
+  height: auto;
 }
 
 header.nav {
