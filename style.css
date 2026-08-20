@@ -196,14 +196,29 @@ ul {
 .nav__mobile a:hover {
   color: var(--foreground);
 }
-
 /* ============================================================
-   HERO
+   BRAND LANDING (Ecrã inicial só com o logo)
+   ============================================================ */
+.brand-landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100dvh - 80px); /* Ocupa a altura inteira descontando a nav */
+  width: 100%;
+}
+
+.brand-landing__logo img {
+  width: auto;
+  max-height: clamp(200px, 35vh, 420px);
+  display: block;
+}
+/* ============================================================
+   HERO (Texto que fica logo abaixo ao fazer scroll)
    ============================================================ */
 .hero {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 10rem 1.5rem 6rem;
+  padding: 4rem 1.5rem 6rem; /* Padding superior reduzido para o scroll suave */
 }
 
 .hero__title {
@@ -241,35 +256,6 @@ ul {
   letter-spacing: 0.15em;
   color: var(--muted-foreground);
 }
-/* Centra apenas o contentor do logo */
-.hero__brand-logo {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 2.5rem;   /* Espaço entre o logo e o texto abaixo */
-}
-
-/* Tamanho do logo */
-.hero__brand-logo img {
-  width: auto;
-  max-height: 220px;       /* Ajusta este valor se quiseres a imagem maior ou menor */
-  height: auto;
-}
-
-/* Controla o tamanho e margem do logo */
-.hero__brand-logo img {
-  width: auto;
-  max-height: 500px;         /* Aumenta ou diminui este valor para ajustar o tamanho */
-  margin-bottom: 2rem;
-  display: block;
-}
-
-/* Centraliza os elementos flex internos */
-.hero--centered .eyebrow,
-.hero--centered .hero__disciplines {
-  justify-content: center;
-}
-
 /* ============================================================
    SECÇÕES GENÉRICAS
    ============================================================ */
