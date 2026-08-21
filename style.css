@@ -205,11 +205,10 @@ ul {
   align-items: center;
   width: 100%;
   
-  /* REDUZIDO: Passa de 100vh/calc para 55vh para eliminar o excesso de altura */
-  min-height: 55vh; 
+  min-height: 50vh; 
   
-  /* Ajusta a margem de topo para compensar o header fixo sem criar um buraco gigante */
-  padding-top: 5rem; 
+  /* Reduzido de 5rem para 3rem para dar espaço ao logo maior sem bater na nav */
+  padding-top: 3rem; 
   padding-bottom: 1rem;
   box-sizing: border-box;
 }
@@ -217,7 +216,8 @@ ul {
 /* Tamanho do logo */
 .hero__brand-logo img {
   width: auto;
-  max-height: 45vh; /* Limita a altura do logo proporcionalmente */
+  /* AUMENTADO: Passou de 45vh para 65vh (ou podes usar um valor fixo como 500px) */
+  max-height: 65vh; 
   height: auto;
 }
 
