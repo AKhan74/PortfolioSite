@@ -199,31 +199,26 @@ ul {
 /* ============================================================
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
-/* Ocupa a entrada da landing page e centra o logo vertical/horizontalmente */
 .hero__brand-logo {
   display: flex;
   justify-content: center;
-  align-items: center;            /* Centra a caveira no meio do espaço */
+  align-items: center;
   width: 100%;
-  min-height: calc(100vh - 120px);/* Faz a secção ocupar a ecrã inicial quase toda */
-  padding-top: 40px;              /* Espaço mínimo de segurança para não colar no menu */
+  
+  /* REDUZIDO: Passa de 100vh/calc para 55vh para eliminar o excesso de altura */
+  min-height: 55vh; 
+  
+  /* Ajusta a margem de topo para compensar o header fixo sem criar um buraco gigante */
+  padding-top: 5rem; 
+  padding-bottom: 1rem;
   box-sizing: border-box;
 }
 
 /* Tamanho do logo */
 .hero__brand-logo img {
   width: auto;
-  max-height: 50vh;               /* O logo escala até 50% da altura do ecrã */
-  max-width: 90vw;                /* Impede que saia das bordas em ecrãs estreitos */
-  object-fit: contain;
-}
-
-header.nav {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  z-index: 100 !important;
+  max-height: 45vh; /* Limita a altura do logo proporcionalmente */
+  height: auto;
 }
 
 /* ============================================================
