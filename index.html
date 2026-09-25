@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- ============ SEO: edita o título e a descrição ============ -->
   <title>Deivis Tavares aKa AKhan74 — Creative Generalist</title>
-  <meta name="description" content="Deivis Tavares aKa AKhan74 porfotlio — 3D, game design, illustration and UI design." />
+  <meta name="description" content="Deivis Tavares aKa AKhan74 portfolio — 3D, game design, illustration and UI design." />
   <meta name="theme-color" content="#242320" />
 
-  <!-- Tipos de letra (Geist). Se preferires, podes remover e usar as fontes do sistema. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -17,13 +15,9 @@
 </head>
 <body>
 
-  <!-- ============================================================ -->
-  <!-- NAVEGAÇÃO                                                     -->
-  <!-- ============================================================ -->
   <header class="nav">
     <nav class="nav__inner">
       <a href="#top" class="nav__brand">
-        <!-- O TEU NOME AQUI -->
         <span class="nav__name">AKhan74</span>
         <span class="nav__role">Creative Generalist</span>
       </a>
@@ -43,7 +37,6 @@
       </button>
     </nav>
 
-    <!-- Menu mobile (aparece ao clicar no botão) -->
     <ul class="nav__mobile" id="navMobile" hidden>
       <li><a href="#work">Works</a></li>
       <li><a href="#about">About</a></li>
@@ -52,65 +45,29 @@
     </ul>
   </header>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const navToggle = document.getElementById('navToggle');
-    const navMobile = document.getElementById('navMobile');
-
-    if (!navToggle || !navMobile) return;
-
-    navToggle.addEventListener('click', () => {
-      // Alterna a classe 'is-open' no menu mobile
-      const isOpen = navMobile.classList.toggle('is-open');
-      
-      // Atualiza a acessibilidade
-      navToggle.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Esconde o menu ao clicar em qualquer link
-    navMobile.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMobile.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  });
-</script>
-
   <main id="top">
 
-    <!-- ============================================================ -->
-    <!-- HERO (secção de topo)                                        -->
-    <!-- ============================================================ -->
-<!-- LANDING SCREEN (Apenas o logo centrado no ecrã) -->
-<section class="hero">
-  <!-- LOGO CENTRADO -->
-  <div class="hero__brand-logo">
-    <img src="images/AKhan74_Logo.png" alt="AKhan74 Logo" />
-  </div>
+    <section class="hero">
+      <div class="hero__brand-logo">
+        <img src="images/AKhan74_Logo.png" alt="AKhan74 Logo" />
+      </div>
 
-  <p class="eyebrow"><span class="dot">&#9679;</span> Available for projects &middot; 2026</p>
+      <p class="eyebrow"><span class="dot">&#9679;</span> Available for projects &middot; 2026</p>
 
-  <!-- TÍTULO PRINCIPAL -->
-  <h1 class="hero__title">Fueled by game design, crafted in 3D, drawn in 2D.</h1>
+      <h1 class="hero__title">Fueled by game design, crafted in 3D, drawn in 2D.</h1>
 
-  <!-- PARÁGRAFO DE INTRODUÇÃO -->
-  <p class="hero__text">
-    I’m Deivis, aKa AKhan74 — a multidisciplinary creative working across 3D, game design, and visual art.
-  </p>
+      <p class="hero__text">
+        I’m Deivis, aKa AKhan74 — a multidisciplinary creative working across 3D, game design, and visual art.
+      </p>
 
-  <div class="hero__disciplines">
-    <span>3D Generalist</span>
-    <span>Game Design</span>
-    <span>Illustration</span>
-    <span>UI Design</span>
-  </div>
-</section>
+      <div class="hero__disciplines">
+        <span>3D Generalist</span>
+        <span>Game Design</span>
+        <span>Illustration</span>
+        <span>UI Design</span>
+      </div>
+    </section>
 
-    <!-- ============================================================ -->
-    <!-- GALERIA DE TRABALHO                                          -->
-    <!-- Para adicionar/editar projetos, muda os data-* e as imagens. -->
-    <!-- ============================================================ -->
     <section id="work" class="section">
       <div class="section__head">
         <div>
@@ -118,7 +75,6 @@
           <h2 class="section__title">Weapons</h2>
         </div>
 
-        <!-- Botões de filtro -->
         <div class="filters" id="filters">
           <button type="button" class="filter is-active" data-filter="Todos">All</button>
           <button type="button" class="filter" data-filter="3D">3D</button>
@@ -128,16 +84,8 @@
         </div>
       </div>
 
-      <!--
-        GRID DE PROJETOS
-        Cada projeto é um <button class="card">.
-        - data-category: 3D | Game Design | Ilustração | UI  (tem de ser igual ao filtro)
-        - A classe "card--wide" faz o projeto ocupar a largura toda (destaque).
-        - Os atributos data-* alimentam a janela de detalhe (lightbox).
-      -->
       <div class="grid" id="grid">
 
-        <!-- PROJETO 1 (destaque) -->
         <button type="button" class="card card--wide" data-category="3D"
           data-title="3D-Modeling" data-role="3D" data-year="2025"
           data-desc="Sniper weapon modelled in Blender and painting using Uccupaint AddOn"
@@ -155,7 +103,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 2 -->
         <button type="button" class="card" data-category="3D"
           data-title="Corporate Unit" data-role="3D print" data-year="2024"
           data-desc="Print-Ready Mech Asset. A sci-fi mech miniature crafted for tabletop gaming."
@@ -173,7 +120,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 3 -->
         <button type="button" class="card" data-category="3D Print"
           data-title="Container" data-role="Wargame/RPG Terrains" data-year="2025"
           data-desc="Sci Fi Container for 3D print to use in wargames or RPG"
@@ -191,7 +137,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 4 (destaque) -->
         <button type="button" class="card card--wide" data-category="3D"
           data-title="3D-Modeling" data-role="3D" data-year="2025"
           data-desc="Sniper weapon modelled in Blender and painting using Uccupaint AddOn"
@@ -209,7 +154,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 5 -->
         <button type="button" class="card" data-category="3D Model"
           data-title="Low Poly" data-role="3D render illustration" data-year="2016"
           data-desc="Low Poly 3D of a planet for a campaign"
@@ -227,7 +171,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 6 -->
         <button type="button" class="card" data-category="3D Model"
           data-title="Low Poly" data-role="3D render illustration" data-year="2016"
           data-desc="3D model render to use for a document support"
@@ -245,7 +188,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 7 (destaque) -->
         <button type="button" class="card card--wide" data-category="pixel Art"
           data-title="Pixel art" data-role="Illustration" data-year="2019"
           data-desc="Pixel Art Urban tribes"
@@ -263,8 +205,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 8 -->
-        
         <button type="button" class="card" data-category="pixel Art"
           data-title="Pixel art" data-role="Illustration" data-year="2019"
           data-desc="Pixel Art Urban tribes"
@@ -282,7 +222,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 9 -->
         <button type="button" class="card" data-category="pixel Art"
           data-title="Pixel art" data-role="Illustration" data-year="2019"
           data-desc="Pixel Art Urban tribes - Skateboarding"
@@ -300,8 +239,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 10 -->
-        
         <button type="button" class="card" data-category="pixel Art"
           data-title="Pixel art" data-role="Illustration" data-year="2019"
           data-desc="Family Portrait"
@@ -319,7 +256,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 11 -->
         <button type="button" class="card" data-category="pixel Art"
           data-title="Pixel art" data-role="Illustration" data-year="2019"
           data-desc="Family Portrait"
@@ -337,7 +273,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 12 (destaque) -->
         <button type="button" class="card card--wide" data-category="pixel Art"
           data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
           data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
@@ -355,8 +290,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 13 -->
-        
         <button type="button" class="card" data-category="pixel Art"
           data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
           data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
@@ -374,7 +307,6 @@
           </div>
         </button>
 
-        <!-- PROJETO 14 -->
         <button type="button" class="card" data-category="pixel Art"
           data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
           data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
@@ -392,125 +324,125 @@
           </div>
         </button>
 
-        <!-- PROJETO 15 -->
-        <button type="button" class="card" data-category="pixel Art"
-          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
-          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
-          data-tags="Photoshop and Unity"
-          data-image="images/HERO_Drawn.gif">
-          <div class="card__media card__media--wide">
-            <img src="images/HERO_Drawn.gif" alt="pixel art - Animation" />
-          </div>
-          <div class="card__meta">
-            <div>
-              <h3 class="card__title">Pixel Art Environment</h3>
-              <p class="card__role">Environment</p>
+        <div class="project-expandable-content" id="money-lords-more" hidden>
+          <button type="button" class="card" data-category="pixel Art"
+            data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+            data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+            data-tags="Photoshop and Unity"
+            data-image="images/HERO_Drawn.gif">
+            <div class="card__media card__media--wide">
+              <img src="images/HERO_Drawn.gif" alt="pixel art - Animation" />
             </div>
-            <span class="card__tag">Environment &middot; 2018</span>
-          </div>
-        </button>
-
-        <!-- PROJETO 15 -->
-        <button type="button" class="card" data-category="pixel Art"
-          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
-          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
-          data-tags="Photoshop and Unity"
-          data-image="images/HERO_Shooting.gif">
-          <div class="card__media card__media--wide">
-            <img src="images/HERO_Shooting.gif" alt="pixel art - Animation" />
-          </div>
-          <div class="card__meta">
-            <div>
-              <h3 class="card__title">Pixel Art Environment</h3>
-              <p class="card__role">Environment</p>
+            <div class="card__meta">
+              <div>
+                <h3 class="card__title">Pixel Art Environment</h3>
+                <p class="card__role">Environment</p>
+              </div>
+              <span class="card__tag">Environment &middot; 2018</span>
             </div>
-            <span class="card__tag">Environment &middot; 2018</span>
-          </div>
-        </button>
+          </button>
 
-        <!-- PROJETO 16 -->
-        <button type="button" class="card" data-category="pixel Art"
-          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
-          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
-          data-tags="Photoshop and Unity"
-          data-image="images/Player_FiringAimRest_WalkGun_Walk_Idle.gif">
-          <div class="card__media card__media--wide">
-            <img src="images/Player_FiringAimRest_WalkGun_Walk_Idle.gif" alt="pixel art - Animation" />
-          </div>
-          <div class="card__meta">
-            <div>
-              <h3 class="card__title">Pixel Art Environment</h3>
-              <p class="card__role">Environment</p>
+          <button type="button" class="card" data-category="pixel Art"
+            data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+            data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+            data-tags="Photoshop and Unity"
+            data-image="images/HERO_Shooting.gif">
+            <div class="card__media card__media--wide">
+              <img src="images/HERO_Shooting.gif" alt="pixel art - Animation" />
             </div>
-            <span class="card__tag">Environment &middot; 2018</span>
-          </div>
-        </button>
-
-        <!-- PROJETO 17 -->
-        <button type="button" class="card" data-category="pixel Art"
-          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
-          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
-          data-tags="Photoshop and Unity"
-          data-image="images/HERO_Dying_Sketchs_a.gif">
-          <div class="card__media card__media--wide">
-            <img src="images/HERO_Dying_Sketchs_a.gif" alt="pixel art - Animation" />
-          </div>
-          <div class="card__meta">
-            <div>
-              <h3 class="card__title">Pixel Art Environment</h3>
-              <p class="card__role">Environment</p>
+            <div class="card__meta">
+              <div>
+                <h3 class="card__title">Pixel Art Environment</h3>
+                <p class="card__role">Environment</p>
+              </div>
+              <span class="card__tag">Environment &middot; 2018</span>
             </div>
-            <span class="card__tag">Environment &middot; 2018</span>
-          </div>
-        </button>
+          </button>
 
-        <!-- PROJETO 17 -->        
-        <button type="button" class="card" data-category="pixel Art"
-          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
-          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
-          data-tags="Photoshop and Unity"
-          data-image="images/Player_DeathAnimations_Pixel.gif">
-          <div class="card__media card__media--wide">
-            <img src="images/Player_DeathAnimations_Pixel.gif" alt="pixel art - Animation" />
-          </div>
-          <div class="card__meta">
-            <div>
-              <h3 class="card__title">Pixel Art Environment</h3>
-              <p class="card__role">Environment</p>
+          <button type="button" class="card" data-category="pixel Art"
+            data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+            data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+            data-tags="Photoshop and Unity"
+            data-image="images/Player_FiringAimRest_WalkGun_Walk_Idle.gif">
+            <div class="card__media card__media--wide">
+              <img src="images/Player_FiringAimRest_WalkGun_Walk_Idle.gif" alt="pixel art - Animation" />
             </div>
-            <span class="card__tag">Environment &middot; 2018</span>
-          </div>
-        </button>
-
-        <!-- PROJETO 18 -->
-        <button type="button" class="card" data-category="pixel Art"
-          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
-          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
-          data-tags="Photoshop and Unity"
-          data-image="images/Enemies_Anim_Mech01_Sketch03.gif">
-          <div class="card__media card__media--wide">
-            <img src="images/Enemies_Anim_Mech01_Sketch03.gif" alt="pixel art - Animation" />
-          </div>
-          <div class="card__meta">
-            <div>
-              <h3 class="card__title">Pixel Art Environment</h3>
-              <p class="card__role">Environment</p>
+            <div class="card__meta">
+              <div>
+                <h3 class="card__title">Pixel Art Environment</h3>
+                <p class="card__role">Environment</p>
+              </div>
+              <span class="card__tag">Environment &middot; 2018</span>
             </div>
-            <span class="card__tag">Environment &middot; 2018</span>
-          </div>
-        </button>
+          </button>
 
+          <button type="button" class="card" data-category="pixel Art"
+            data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+            data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+            data-tags="Photoshop and Unity"
+            data-image="images/HERO_Dying_Sketchs_a.gif">
+            <div class="card__media card__media--wide">
+              <img src="images/HERO_Dying_Sketchs_a.gif" alt="pixel art - Animation" />
+            </div>
+            <div class="card__meta">
+              <div>
+                <h3 class="card__title">Pixel Art Environment</h3>
+                <p class="card__role">Environment</p>
+              </div>
+              <span class="card__tag">Environment &middot; 2018</span>
+            </div>
+          </button>
+
+          <button type="button" class="card" data-category="pixel Art"
+            data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+            data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+            data-tags="Photoshop and Unity"
+            data-image="images/Player_DeathAnimations_Pixel.gif">
+            <div class="card__media card__media--wide">
+              <img src="images/Player_DeathAnimations_Pixel.gif" alt="pixel art - Animation" />
+            </div>
+            <div class="card__meta">
+              <div>
+                <h3 class="card__title">Pixel Art Environment</h3>
+                <p class="card__role">Environment</p>
+              </div>
+              <span class="card__tag">Environment &middot; 2018</span>
+            </div>
+          </button>
+
+          <button type="button" class="card" data-category="pixel Art"
+            data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+            data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+            data-tags="Photoshop and Unity"
+            data-image="images/Enemies_Anim_Mech01_Sketch03.gif">
+            <div class="card__media card__media--wide">
+              <img src="images/Enemies_Anim_Mech01_Sketch03.gif" alt="pixel art - Animation" />
+            </div>
+            <div class="card__meta">
+              <div>
+                <h3 class="card__title">Pixel Art Environment</h3>
+                <p class="card__role">Environment</p>
+              </div>
+              <span class="card__tag">Environment &middot; 2018</span>
+            </div>
+          </button>
+        </div>
+
+        <div class="see-more-container">
+          <button type="button" class="btn-see-more" onclick="toggleProjectContent(this, 'money-lords-more')">
+            <span>See More</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+        </div>
 
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- SOBRE MIM                                                    -->
-    <!-- ============================================================ -->
     <section id="about" class="section">
       <div class="about">
         <div class="about__photo">
-          <!-- A TUA FOTO: substitui images/portrait.png -->
           <img src="images/AKhan74.png" alt="Self portrait pixel art" height="400" />
         </div>
 
@@ -542,9 +474,6 @@
       </div>
     </section>
 
-    <!-- ============================================================ -->
-    <!-- PERCURSO / EXPERIÊNCIA                                       -->
-    <!-- ============================================================ -->
     <section id="experience" class="section">
       <div class="exp">
         <p class="eyebrow">Profesisonal progress</p>
@@ -558,113 +487,4 @@
                 <h3>General artist & Game Designer</h3>
                 <p class="exp__company">Block Bastards</p>
               </div>
-              <p class="exp__desc">Game Design, 3D modeling, UI/UX Design, Illustration, Concept Art, Animation, Video Editing</p>
-            </div>
-          </li>
-          <li class="exp__item">
-            <span class="exp__period">2014 — Present</span>
-            <div class="exp__detail">
-              <div>
-                <h3>3D Artist &amp; Game Designer</h3>
-                <p class="exp__company">In Pixel We Trust games</p>
-              </div>
-              <p class="exp__desc">Solo/Core Developer — V8ORS-Flying Rat & Ace of Space. Responsible for all 3D assets, UI design, concept art, and primary code implementation.</p>
-            </div>
-          </li>
-          <li class="exp__item">
-            <span class="exp__period">1998 — 2024</span>
-            <div class="exp__detail">
-              <div>
-                <h3>Licenciatura em Design</h3>
-                <p class="exp__company">Universidade de Aveiro</p>
-              </div>
-              <p class="exp__desc">Years after putting my studies on hold, I returned to university at 50 to graduate.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- CONTACTO                                                     -->
-    <!-- ============================================================ -->
-    <section id="contact" class="section">
-      <div class="contact">
-        <div class="contact__left">
-          <p class="eyebrow">Contacts</p>
-          <h2 class="contact__title">Let's build something</h2>
-          <!-- O TEU EMAIL -->
-          <a href="mailto:ola@ruimarques.com" class="contact__email">
-            deivis@akhan74.com
-            <span class="arrow" aria-hidden="true">&#8599;</span>
-          </a>
-        </div>
-
-        <!-- AS TUAS REDES: muda o href e o texto -->
-        <ul class="socials">
-          <li>
-            <a href="https://www.instagram.com/deivis_tavares/" target="_blank" rel="noopener noreferrer">
-              <span class="socials__label">Instagram</span>
-              <span class="socials__handle">@deivis_tavares <span class="arrow" aria-hidden="true">&#8599;</span></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.artstation.com/akhan74" target="_blank" rel="noopener noreferrer">
-              <span class="socials__label">ArtStation</span>
-              <span class="socials__handle">akhan74 <span class="arrow" aria-hidden="true">&#8599;</span></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/deivis/" target="_blank" rel="noopener noreferrer">
-              <span class="socials__label">LinkedIn</span>
-              <span class="socials__handle">in/deivis <span class="arrow" aria-hidden="true">&#8599;</span></span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.behance.net/akhan74" target="_blank" rel="noopener noreferrer">
-              <span class="socials__label">Behance</span>
-              <span class="socials__handle">akhan74 <span class="arrow" aria-hidden="true">&#8599;</span></span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- RODAPÉ -->
-    <footer class="footer">
-      <p>&copy; 2026 AKhan74</p>
-      <p>Made with Love &middot; Planet Earth</p>
-    </footer>
-
-  </main>
-
-  <!-- ============================================================ -->
-  <!-- LIGHTBOX (janela de detalhe do projeto) — não precisa editar -->
-  <!-- ============================================================ -->
-  <div class="lightbox" id="lightbox" hidden>
-    <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Fechar">&times;</button>
-    <div class="lightbox__inner" id="lightboxInner">
-      <div class="lightbox__media">
-        <img id="lbImage" src="" alt="" />
-      </div>
-      <div class="lightbox__body">
-        <p class="lightbox__category" id="lbCategory"></p>
-        <h3 class="lightbox__title" id="lbTitle"></h3>
-        <dl class="lightbox__facts">
-          <div>
-            <dt>Função</dt>
-            <dd id="lbRole"></dd>
-          </div>
-          <div>
-            <dt>Ano</dt>
-            <dd id="lbYear"></dd>
-          </div>
-        </dl>
-        <p class="lightbox__desc" id="lbDesc"></p>
-        <div class="tags tags--mono" id="lbTags"></div>
-      </div>
-    </div>
-  </div>
-
-</body>
-</html>
+              <p class="exp__desc">Game Design, 3D modeling, UI
