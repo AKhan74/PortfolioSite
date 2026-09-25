@@ -290,39 +290,71 @@ ul {
   letter-spacing: -0.02em;
 }
 
-/* ============================================================
+============================================================
+
    FILTROS
+
    ============================================================ */
+
 .filters {
+
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 0.5rem;
+
 }
+
+
 
 .filter {
-  border: 1px solid #efa555; /* Borda laranja no estado normal */
+
+  border: 1px solid var(--border);
+
   border-radius: 999px;
+
   padding: 0.375rem 1rem;
+
   background: none;
+
   color: var(--muted-foreground);
+
   font-family: var(--font-mono);
+
   font-size: 0.75rem;
+
   text-transform: uppercase;
+
   letter-spacing: 0.15em;
+
   cursor: pointer;
+
   transition: color 0.2s, border-color 0.2s, background 0.2s;
+
 }
+
+
 
 .filter:hover {
+
   color: var(--foreground);
-  border-color: #efa555; /* Mantém ou realça a borda laranja ao passar o rato */
+
+  border-color: color-mix(in oklch, var(--foreground) 40%, transparent);
+
 }
 
+
+
 .filter.is-active {
-  background: #efa555; /* Preenchimento laranja quando ativo */
-  border-color: #efa555;
-  color: #000; /* Cor do texto quando ativo (ajusta se preferires branco ou outra cor) */
-}
+
+  background: var(--accent);
+
+  border-color: var(--accent);
+
+  color: var(--accent-foreground);
+
+} 
 
 /* ============================================================
    GRID DE PROJETOS
