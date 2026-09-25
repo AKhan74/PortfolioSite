@@ -196,6 +196,7 @@ ul {
 .nav__mobile a:hover {
   color: var(--foreground);
 }
+
 /* ============================================================
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
@@ -265,6 +266,7 @@ ul {
   letter-spacing: 0.15em;
   color: var(--muted-foreground);
 }
+
 /* ============================================================
    SECÇÕES GENÉRICAS
    ============================================================ */
@@ -290,70 +292,38 @@ ul {
   letter-spacing: -0.02em;
 }
 
-============================================================
-
+/* ============================================================
    FILTROS
-
    ============================================================ */
-
 .filters {
-
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 0.5rem;
-
 }
-
-
 
 .filter {
-
   border: 1px solid var(--border);
-
   border-radius: 999px;
-
   padding: 0.375rem 1rem;
-
   background: none;
-
   color: var(--muted-foreground);
-
   font-family: var(--font-mono);
-
   font-size: 0.75rem;
-
   text-transform: uppercase;
-
   letter-spacing: 0.15em;
-
   cursor: pointer;
-
   transition: color 0.2s, border-color 0.2s, background 0.2s;
-
 }
-
-
 
 .filter:hover {
-
   color: var(--foreground);
-
   border-color: color-mix(in oklch, var(--foreground) 40%, transparent);
-
 }
 
-
-
 .filter.is-active {
-
   background: var(--accent);
-
   border-color: var(--accent);
-
   color: var(--accent-foreground);
-
 } 
 
 /* ============================================================
@@ -383,7 +353,6 @@ ul {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: #000000;
-   
 }
 
 .card__media img {
@@ -437,6 +406,49 @@ ul {
 
 .card.is-hidden {
   display: none;
+}
+
+/* ============================================================
+   BOTÃO SEE MORE / SEE LESS (Global: Mobile & Desktop)
+   ============================================================ */
+/* Faz com que a div interna passe os cartões diretamente para o CSS Grid pai */
+.project-extra {
+  display: contents;
+}
+
+/* Quando tem a propriedade 'hidden', esconde efetivamente a div e o seu conteúdo */
+.project-extra[hidden] {
+  display: none !important;
+}
+
+/* Ocupa a largura toda da grelha para o botão ficar centrado no fim do projeto */
+.see-more-wrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0 3rem 0;
+}
+
+.btn-see-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: transparent;
+  color: #efa555; /* Texto em laranja */
+  font-family: inherit;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-see-more:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* ============================================================
@@ -667,9 +679,6 @@ ul {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
-}
-
-.footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -876,43 +885,4 @@ ul {
   .lightbox__inner {
     grid-template-columns: 1.4fr 1fr;
   }
-   /* Faz com que a div interna passe os cartões diretamente para o CSS Grid pai */
-.project-extra {
-  display: contents;
-}
-
-/* Quando tem a propriedade 'hidden', esconde efetivamente a div e o seu conteúdo */
-.project-extra[hidden] {
-  display: none !important;
-}
-
-/* Ocupa a largura toda da grelha para o botão ficar centrado no fim do projeto */
-.see-more-wrapper {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: center;
-  padding: 1.5rem 0 3rem 0;
-}
-
-.btn-see-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-  background: transparent;
-  color: #efa555; /* Texto em laranja */
-  font-family: inherit;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-.btn-see-more:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
-}
 }
