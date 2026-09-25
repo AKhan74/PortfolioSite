@@ -844,4 +844,43 @@ ul {
   .lightbox__inner {
     grid-template-columns: 1.4fr 1fr;
   }
+   /* Faz com que a div interna passe os cartões diretamente para o CSS Grid pai */
+.project-extra {
+  display: contents;
+}
+
+/* Quando tem a propriedade 'hidden', esconde efetivamente a div e o seu conteúdo */
+.project-extra[hidden] {
+  display: none !important;
+}
+
+/* Ocupa a largura toda da grelha para o botão ficar centrado no fim do projeto */
+.see-more-wrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0 3rem 0;
+}
+
+.btn-see-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-see-more:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
 }
