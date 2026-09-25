@@ -902,7 +902,7 @@ ul {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 999px;
   background: transparent;
-  color: inherit;
+  color: #efa555; /* Texto em laranja */
   font-family: inherit;
   font-size: 0.8rem;
   text-transform: uppercase;
