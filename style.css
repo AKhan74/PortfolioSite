@@ -844,41 +844,4 @@ ul {
   .lightbox__inner {
     grid-template-columns: 1.4fr 1fr;
   }
-   /* Suporte ao See More / See Less por Grupo */
-.project-group {
-  display: contents;
-}
-
-.project-extra {
-  display: contents;
-}
-
-.see-more-wrapper {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: center;
-  margin: 1.5rem 0 3rem;
-}
-
-.btn-see-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.5rem;
-  border: 1px solid var(--border, rgba(255, 255, 255, 0.15));
-  border-radius: 999px;
-  background: transparent;
-  color: inherit;
-  font-family: inherit;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-.btn-see-more:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
-}
 }
