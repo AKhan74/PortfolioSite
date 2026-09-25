@@ -196,6 +196,7 @@ ul {
 .nav__mobile a:hover {
   color: var(--foreground);
 }
+
 /* ============================================================
    BRAND LANDING (Ecrã inicial só com o logo)
    ============================================================ */
@@ -204,10 +205,7 @@ ul {
   justify-content: center;
   align-items: center;
   width: 100%;
-  
   min-height: 50vh; 
-  
-  /* Reduzido de 5rem para 3rem para dar espaço ao logo maior sem bater na nav */
   padding-top: 3rem; 
   padding-bottom: 1rem;
   box-sizing: border-box;
@@ -216,7 +214,6 @@ ul {
 /* Tamanho do logo */
 .hero__brand-logo img {
   width: auto;
-  /* AUMENTADO: Passou de 45vh para 65vh (ou podes usar um valor fixo como 500px) */
   max-height: 65vh; 
   height: auto;
 }
@@ -227,7 +224,7 @@ ul {
 .hero {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 1.5rem 6rem;         /* Removido o padding superior para encostar suavemente */
+  padding: 0 1.5rem 6rem;
 }
 
 .hero__title {
@@ -265,6 +262,7 @@ ul {
   letter-spacing: 0.15em;
   color: var(--muted-foreground);
 }
+
 /* ============================================================
    SECÇÕES GENÉRICAS
    ============================================================ */
@@ -325,7 +323,7 @@ ul {
 }
 
 /* ============================================================
-   GRID DE PROJETOS
+   GRID DE PROJETOS & EXPANSÃO (SEE MORE)
    ============================================================ */
 .grid {
   display: grid;
@@ -351,7 +349,6 @@ ul {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: #000000;
-   
 }
 
 .card__media img {
@@ -405,6 +402,57 @@ ul {
 
 .card.is-hidden {
   display: none;
+}
+
+/* Conteúdo Expansível do Projeto */
+.project-expandable-content {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: 3rem;
+}
+
+.project-expandable-content[hidden] {
+  display: none !important;
+}
+
+/* Botão "See More" */
+.see-more-container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.btn-see-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-see-more:hover {
+  background: var(--secondary);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-see-more svg {
+  transition: transform 0.3s ease;
+}
+
+.btn-see-more.is-expanded svg {
+  transform: rotate(180deg);
 }
 
 /* ============================================================
@@ -635,9 +683,6 @@ ul {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
-}
-
-.footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -669,7 +714,7 @@ ul {
 }
 
 .lightbox[hidden] {
-  display: none;
+  display: none !important;
 }
 
 .lightbox__close {
