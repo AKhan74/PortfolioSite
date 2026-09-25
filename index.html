@@ -1,1185 +1,670 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portefólio</title>
-  
-  <!-- ESTILOS CSS INLINE -->
-  <style>
-    /* ============================================================
-       PALETA E VARIÁVEIS
-       ============================================================ */
-    :root {
-      --background: oklch(0.15 0.004 60);
-      --foreground: oklch(0.93 0.006 70);
-      --card: oklch(0.185 0.005 60);
-      --muted: oklch(0.22 0.005 60);
-      --muted-foreground: oklch(0.63 0.008 70);
-      --secondary: oklch(0.24 0.005 60);
-      --accent: oklch(0.78 0.13 66);
-      --accent-foreground: oklch(0.18 0.02 60);
-      --border: oklch(1 0 0 / 9%);
-      --radius: 0.5rem;
-
-      --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
-      --font-mono: "Geist Mono", ui-monospace, monospace;
-
-      --maxw: 72rem;
-    }
-
-    /* ============================================================
-       RESET BÁSICO
-       ============================================================ */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      color-scheme: dark;
-    }
-
-    body {
-      background: var(--background);
-      color: var(--foreground);
-      font-family: var(--font-sans);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    .eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-    }
-
-    .eyebrow .dot {
-      color: var(--accent);
-      margin-right: 0.25rem;
-    }
-
-    /* ============================================================
-       NAVEGAÇÃO
-       ============================================================ */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      border-bottom: 1px solid var(--border);
-      background: color-mix(in oklch, var(--background) 80%, transparent);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav__inner {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .nav__brand {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .nav__name {
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-
-    .nav__role {
-      font-family: var(--font-mono);
-      font-size: 0.6875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-    }
-
-    .nav__links {
-      display: none;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav__links a {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-      transition: color 0.2s;
-    }
-
-    .nav__links a:hover {
-      color: var(--foreground);
-    }
-
-    .nav__badge {
-      display: none;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.375rem 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .nav__badge:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .nav__toggle {
-      display: flex;
-      flex-direction: column;
-      gap: 0.375rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.25rem;
-    }
-
-    .nav__toggle span {
-      display: block;
-      width: 1.5rem;
-      height: 1px;
-      background: var(--foreground);
-    }
-
-    .nav__mobile {
-      display: none;
-      flex-direction: column;
-      gap: 0.25rem;
-      border-top: 1px solid var(--border);
-      padding: 1rem 1.5rem;
-    }
-
-    .nav__mobile.is-open {
-      display: flex;
-    }
-
-    .nav__mobile a {
-      display: block;
-      padding: 0.5rem 0;
-      font-family: var(--font-mono);
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-      transition: color 0.2s;
-    }
-
-    .nav__mobile a:hover {
-      color: var(--foreground);
-    }
-
-    /* ============================================================
-       BRAND LANDING
-       ============================================================ */
-    .hero__brand-logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      min-height: 50vh;
-      padding-top: 3rem;
-      padding-bottom: 1rem;
-      box-sizing: border-box;
-    }
-
-    .hero__brand-logo img {
-      width: auto;
-      max-height: 65vh;
-      height: auto;
-    }
-
-    /* ============================================================
-       HERO
-       ============================================================ */
-    .hero {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 1.5rem 6rem;
-    }
-
-    .hero__title {
-      max-width: 56rem;
-      margin-top: 2rem;
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 500;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      text-wrap: balance;
-    }
-
-    .hero__text {
-      max-width: 36rem;
-      margin-top: 2rem;
-      font-size: 1.125rem;
-      line-height: 1.6;
-      color: var(--muted-foreground);
-      text-wrap: pretty;
-    }
-
-    .hero__disciplines {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem 2rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .hero__disciplines span {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-    }
-
-    /* ============================================================
-       SECÇÕES GENÉRICAS & FILTROS
-       ============================================================ */
-    .section {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 5rem 1.5rem;
-    }
-
-    .section__head {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .section__title {
-      margin-top: 0.5rem;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 500;
-      letter-spacing: -0.02em;
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .filter {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.375rem 1rem;
-      background: none;
-      color: var(--muted-foreground);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
-    }
-
-    .filter:hover {
-      color: var(--foreground);
-      border-color: color-mix(in oklch, var(--foreground) 40%, transparent);
-    }
-
-    .filter.is-active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--accent-foreground);
-    }
-
-    /* ============================================================
-       GRID DE PROJETOS & EXPANSÃO (SEE MORE)
-       ============================================================ */
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      column-gap: 1.5rem;
-      row-gap: 3rem;
-    }
-
-    .card {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      color: inherit;
-    }
-
-    .card__media {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #000000;
-    }
-
-    .card__media img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      transition: transform 0.7s ease;
-    }
-
-    .card__media--wide img {
-      aspect-ratio: 16 / 9;
-    }
-
-    .card:hover .card__media img {
-      transform: scale(1.03);
-    }
-
-    .card__meta {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .card__title {
-      font-size: 1.125rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      transition: color 0.2s;
-    }
-
-    .card:hover .card__title {
-      color: var(--accent);
-    }
-
-    .card__role {
-      margin-top: 0.25rem;
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-    }
-
-    .card__tag {
-      flex-shrink: 0;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-    }
-
-    /* Conteúdo Expansível do Projeto */
-    .project-expandable-content {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-
-    .project-expandable-content[hidden] {
-      display: none !important;
-    }
-
-    /* Botão "See More" */
-    .see-more-container {
-      grid-column: 1 / -1;
-      display: flex;
-      justify-content: center;
-      margin-top: 1.5rem;
-    }
-
-    .btn-see-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: var(--card);
-      color: var(--foreground);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
-
-    .btn-see-more:hover {
-      background: var(--secondary);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .btn-see-more svg {
-      transition: transform 0.3s ease;
-    }
-
-    .btn-see-more.is-expanded svg {
-      transform: rotate(180deg);
-    }
-
-    /* ============================================================
-       SOBRE
-       ============================================================ */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .about__photo {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
-    }
-
-    .about__photo img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
-
-    .about__title {
-      max-width: 32rem;
-      margin-top: 0.5rem;
-      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-      font-weight: 500;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      text-wrap: balance;
-    }
-
-    .about__text {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      margin-top: 2rem;
-      color: var(--muted-foreground);
-      line-height: 1.6;
-      text-wrap: pretty;
-    }
-
-    .about__skills {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .about__skills .eyebrow {
-      margin-bottom: 1rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tags li, .tags span {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.25rem 0.75rem;
-      font-size: 0.875rem;
-      color: color-mix(in oklch, var(--foreground) 80%, transparent);
-    }
-
-    /* ============================================================
-       PERCURSO (EXPERIENCE)
-       ============================================================ */
-    .exp {
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .exp__list {
-      margin-top: 3rem;
-    }
-
-    .exp__item {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .exp__period {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-    }
-
-    .exp__detail {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-
-    .exp__detail h3 {
-      font-size: 1.125rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-
-    .exp__company {
-      font-size: 0.875rem;
-      color: var(--accent);
-    }
-
-    .exp__desc {
-      max-width: 28rem;
-      font-size: 0.875rem;
-      line-height: 1.6;
-      color: var(--muted-foreground);
-      text-wrap: pretty;
-    }
-
-    /* ============================================================
-       CONTACTO
-       ============================================================ */
-    .contact {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .contact__title {
-      max-width: 28rem;
-      margin-top: 0.5rem;
-      font-size: clamp(2.25rem, 5vw, 3rem);
-      font-weight: 500;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      text-wrap: balance;
-    }
-
-    .contact__email {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 2rem;
-      font-size: clamp(1.25rem, 3vw, 1.5rem);
-      transition: color 0.2s;
-    }
-
-    .contact__email:hover {
-      color: var(--accent);
-    }
-
-    .arrow {
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-
-    .contact__email:hover .arrow {
-      transform: translate(2px, -2px);
-    }
-
-    .socials {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--border);
-      align-self: end;
-    }
-
-    .socials a {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
-      height: 100%;
-      padding: 1.25rem;
-      background: var(--card);
-      transition: background 0.2s;
-    }
-
-    .socials a:hover {
-      background: var(--secondary);
-    }
-
-    .socials__label {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-    }
-
-    .socials__handle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.875rem;
-    }
-
-    /* ============================================================
-       RODAPÉ
-       ============================================================ */
-    .footer {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .footer p {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-    }
-
-    /* ============================================================
-       LIGHTBOX
-       ============================================================ */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 60;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      background: color-mix(in oklch, var(--background) 90%, transparent);
-      backdrop-filter: blur(4px);
-    }
-
-    .lightbox[hidden] {
-      display: none !important;
-    }
-
-    .lightbox__close {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: none;
-      color: var(--muted-foreground);
-      font-size: 1.5rem;
-      line-height: 1;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .lightbox__close:hover {
-      color: var(--foreground);
-      border-color: var(--foreground);
-    }
-
-    .lightbox__inner {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      width: 100%;
-      max-width: 56rem;
-      max-height: 100%;
-      overflow-y: auto;
-    }
-
-    .lightbox__media {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
-    }
-
-    .lightbox__body {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .lightbox__category {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-    }
-
-    .lightbox__title {
-      margin-top: 0.75rem;
-      font-size: 1.875rem;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-
-    .lightbox__facts {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1.5rem;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      font-size: 0.875rem;
-    }
-
-    .lightbox__facts dt {
-      font-family: var(--font-mono);
-      font-size: 0.6875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--muted-foreground);
-    }
-
-    .lightbox__facts dd {
-      margin-top: 0.25rem;
-    }
-
-    .lightbox__desc {
-      margin-top: 1.5rem;
-      color: var(--muted-foreground);
-      line-height: 1.6;
-      text-wrap: pretty;
-    }
-
-    /* ============================================================
-       RESPONSIVO
-       ============================================================ */
-    @media (min-width: 640px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      .card--wide { grid-column: span 2; }
-      .footer { flex-direction: row; align-items: center; justify-content: space-between; }
-    }
-
-    @media (min-width: 768px) {
-      .nav__links, .nav__badge { display: flex; }
-      .nav__toggle, .nav__mobile { display: none; }
-      .hero { padding-top: 2rem; padding-bottom: 4rem; }
-      .section { padding: 7rem 1.5rem; }
-      .section__head { flex-direction: row; align-items: flex-end; justify-content: space-between; }
-      .about { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
-      .exp__item { grid-template-columns: 200px 1fr; gap: 2rem; }
-      .exp__detail { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 2rem; }
-      .contact { grid-template-columns: 1.2fr 1fr; gap: 4rem; }
-      .lightbox { padding: 2.5rem; }
-      .lightbox__inner { grid-template-columns: 1.4fr 1fr; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ============ SEO: edita o título e a descrição ============ -->
+  <title>Deivis Tavares aKa AKhan74 — Creative Generalist</title>
+  <meta name="description" content="Deivis Tavares aKa AKhan74 porfotlio — 3D, game design, illustration and UI design." />
+  <meta name="theme-color" content="#242320" />
+
+  <!-- Tipos de letra (Geist). Se preferires, podes remover e usar as fontes do sistema. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAVEGAÇÃO -->
+  <!-- ============================================================ -->
+  <!-- NAVEGAÇÃO                                                     -->
+  <!-- ============================================================ -->
   <header class="nav">
-    <div class="nav__inner">
-      <div class="nav__brand">
-        <span class="nav__name">O Teu Nome</span>
-        <span class="nav__role">Game Artist & Designer</span>
-      </div>
+    <nav class="nav__inner">
+      <a href="#top" class="nav__brand">
+        <!-- O TEU NOME AQUI -->
+        <span class="nav__name">AKhan74</span>
+        <span class="nav__role">Creative Generalist</span>
+      </a>
 
-      <nav class="nav__links">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#work">Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Professional Journey</a></li>
+        <li><a href="#contact">Contacts</a></li>
+      </ul>
 
-      <a href="#contact" class="nav__badge">Available for Work</a>
+      <a href="#contact" class="nav__badge">Available</a>
 
-      <button type="button" class="nav__toggle" id="navToggle" aria-label="Abrir menu">
+      <button type="button" class="nav__toggle" id="navToggle" aria-label="Alternar menu" aria-expanded="false">
         <span></span>
         <span></span>
       </button>
-    </div>
+    </nav>
 
-    <div class="nav__mobile" id="navMobile">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <!-- Menu mobile (aparece ao clicar no botão) -->
+    <ul class="nav__mobile" id="navMobile" hidden>
+      <li><a href="#work">Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Professional Journey</a></li>
+      <li><a href="#contact">Contacts</a></li>
+    </ul>
   </header>
 
-  <!-- BRAND LANDING LOGO -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
+
+    if (!navToggle || !navMobile) return;
+
+    navToggle.addEventListener('click', () => {
+      // Alterna a classe 'is-open' no menu mobile
+      const isOpen = navMobile.classList.toggle('is-open');
+      
+      // Atualiza a acessibilidade
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Esconde o menu ao clicar em qualquer link
+    navMobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMobile.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  });
+</script>
+
+  <main id="top">
+
+    <!-- ============================================================ -->
+    <!-- HERO (secção de topo)                                        -->
+    <!-- ============================================================ -->
+<!-- LANDING SCREEN (Apenas o logo centrado no ecrã) -->
+<section class="hero">
+  <!-- LOGO CENTRADO -->
   <div class="hero__brand-logo">
-    <img src="https://via.placeholder.com/400x200?text=LOGO" alt="Brand Logo">
+    <img src="images/AKhan74_Logo.png" alt="AKhan74 Logo" />
   </div>
 
-  <!-- HERO TEXT -->
-  <section class="hero">
-    <p class="eyebrow"><span class="dot">•</span> Generalist Artist & Designer</p>
-    <h1 class="hero__title">Creating worlds, assets and interactive experiences.</h1>
-    <p class="hero__text">Working across the entire creative pipeline, I model 3D assets, design game systems, draw concept art, and build clean interfaces.</p>
-    <div class="hero__disciplines">
-      <span>3D Modeling</span>
-      <span>Game Design</span>
-      <span>Concept Art</span>
-      <span>UI/UX Design</span>
-    </div>
-  </section>
+  <p class="eyebrow"><span class="dot">&#9679;</span> Available for projects &middot; 2026</p>
 
-  <!-- SECÇÃO DE TRABALHOS (PORTEFÓLIO) -->
-  <section class="section" id="work">
-    <div class="section__head">
-      <div>
-        <p class="eyebrow"><span class="dot">•</span> Selected Projects</p>
-        <h2 class="section__title">Work</h2>
-      </div>
+  <!-- TÍTULO PRINCIPAL -->
+  <h1 class="hero__title">Fueled by game design, crafted in 3D, drawn in 2D.</h1>
 
-      <div class="filters">
-        <button type="button" class="filter is-active" data-filter="todos">Todos</button>
-        <button type="button" class="filter" data-filter="3d">3D Art</button>
-        <button type="button" class="filter" data-filter="game-design">Game Design</button>
-        <button type="button" class="filter" data-filter="ui">UI/UX</button>
-      </div>
-    </div>
+  <!-- PARÁGRAFO DE INTRODUÇÃO -->
+  <p class="hero__text">
+    I’m Deivis, aKa AKhan74 — a multidisciplinary creative working across 3D, game design, and visual art.
+  </p>
 
-    <div class="grid">
-      <!-- CARD PRINCIPAL -->
-      <article class="card card--wide" 
-               data-category="3d, game-design" 
-               data-title="Money Lords" 
-               data-role="Generalist Artist & Game Designer" 
-               data-year="2023 - 2026" 
-               data-desc="Desenvolvimento de assets 3D, lógica de jogo e interface de utilizador." 
-               data-image="https://via.placeholder.com/800x450" 
-               data-tags="3D, Blender, Unity, UI">
-        <div class="card__media card__media--wide">
-          <img src="https://via.placeholder.com/800x450" alt="Money Lords">
+  <div class="hero__disciplines">
+    <span>3D Generalist</span>
+    <span>Game Design</span>
+    <span>Illustration</span>
+    <span>UI Design</span>
+  </div>
+</section>
+
+    <!-- ============================================================ -->
+    <!-- GALERIA DE TRABALHO                                          -->
+    <!-- Para adicionar/editar projetos, muda os data-* e as imagens. -->
+    <!-- ============================================================ -->
+    <section id="work" class="section">
+      <div class="section__head">
+        <div>
+          <p class="eyebrow">Selection</p>
+          <h2 class="section__title">Weapons</h2>
         </div>
-        <div class="card__meta">
-          <div>
-            <h3 class="card__title">Money Lords</h3>
-            <p class="card__role">Generalist Artist & Game Designer</p>
+
+        <!-- Botões de filtro -->
+        <div class="filters" id="filters">
+          <button type="button" class="filter is-active" data-filter="Todos">All</button>
+          <button type="button" class="filter" data-filter="3D">3D</button>
+          <button type="button" class="filter" data-filter="Game Design">Game Design</button>
+          <button type="button" class="filter" data-filter="Ilustração">Illustration</button>
+          <button type="button" class="filter" data-filter="UI">Design</button>
+        </div>
+      </div>
+
+      <!--
+        GRID DE PROJETOS
+        Cada projeto é um <button class="card">.
+        - data-category: 3D | Game Design | Ilustração | UI  (tem de ser igual ao filtro)
+        - A classe "card--wide" faz o projeto ocupar a largura toda (destaque).
+        - Os atributos data-* alimentam a janela de detalhe (lightbox).
+      -->
+      <div class="grid" id="grid">
+
+        <!-- PROJETO 1 (destaque) -->
+        <button type="button" class="card card--wide" data-category="3D"
+          data-title="3D-Modeling" data-role="3D" data-year="2025"
+          data-desc="Sniper weapon modelled in Blender and painting using Uccupaint AddOn"
+          data-tags="Blender"
+          data-image="images/Sniper_Scavenger.png">
+          <div class="card__media card__media--wide">
+            <img src="images/Sniper_Scavenger.png" alt="3D-Game Asset" />
           </div>
-          <span class="card__tag">3D Art / Game Design</span>
-        </div>
-      </article>
-
-      <!-- BOTÃO SEE MORE -->
-      <div class="see-more-container">
-        <button type="button" class="btn-see-more" id="btnSeeMoreMoneyLords" data-target="money-lords-more">
-          <span>See More</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Scavenger Sniper</h3>
+              <p class="card__role">3D modeling</p>
+            </div>
+            <span class="card__tag">3D &middot; 2026</span>
+          </div>
         </button>
-      </div>
 
-      <!-- CONTEÚDO EXTRA EXPANSÍVEL (Escondido por padrão com 'hidden') -->
-      <div id="money-lords-more" class="project-expandable-content" hidden>
-        <article class="card" 
-                 data-category="3d" 
-                 data-title="Money Lords - Environment Props" 
-                 data-role="3D Modeler" 
-                 data-year="2024" 
-                 data-desc="Conjunto de adereços 3D para os cenários do jogo." 
-                 data-image="https://via.placeholder.com/600x450" 
-                 data-tags="Blender, Texturing">
+        <!-- PROJETO 2 -->
+        <button type="button" class="card" data-category="3D"
+          data-title="Corporate Unit" data-role="3D print" data-year="2024"
+          data-desc="Print-Ready Mech Asset. A sci-fi mech miniature crafted for tabletop gaming."
+          data-tags="Blender"
+          data-image="images/Mechs_1.png">
           <div class="card__media">
-            <img src="https://via.placeholder.com/600x450" alt="Environment Props">
+            <img src="images/Mechs_1.png" alt="Corporate Unit" />
           </div>
           <div class="card__meta">
             <div>
-              <h3 class="card__title">Environment Props</h3>
-              <p class="card__role">3D Modeling & Texturing</p>
+              <h3 class="card__title">Sentinel Unit</h3>
+              <p class="card__role">Character Artist</p>
             </div>
-            <span class="card__tag">3D Art</span>
+            <span class="card__tag">3D &middot; 2024</span>
           </div>
-        </article>
+        </button>
 
-        <article class="card" 
-                 data-category="ui" 
-                 data-title="Money Lords - Interface System" 
-                 data-role="UI Designer" 
-                 data-year="2024" 
-                 data-desc="Desenvolvimento do sistema visual de menus e inventário." 
-                 data-image="https://via.placeholder.com/600x450" 
-                 data-tags="Figma, UI, Vector">
+        <!-- PROJETO 3 -->
+        <button type="button" class="card" data-category="3D Print"
+          data-title="Container" data-role="Wargame/RPG Terrains" data-year="2025"
+          data-desc="Sci Fi Container for 3D print to use in wargames or RPG"
+          data-tags="Blender, 3D Print, Concept"
+          data-image="images/SciFi_Container_1.png">
           <div class="card__media">
-            <img src="https://via.placeholder.com/600x450" alt="UI System">
+            <img src="images/SciFi_Container_1.png" alt="Terrain Container" />
           </div>
           <div class="card__meta">
             <div>
-              <h3 class="card__title">Interface System</h3>
-              <p class="card__role">UI/UX Design</p>
+              <h3 class="card__title">Container</h3>
+              <p class="card__role">Wargame/RPG Terrains</p>
             </div>
-            <span class="card__tag">UI/UX</span>
+            <span class="card__tag">3D Model &middot; 2025</span>
           </div>
-        </article>
-      </div>
-    </div>
-  </section>
+        </button>
 
-  <!-- SECÇÃO SOBRE -->
-  <section class="section" id="about">
-    <div class="about">
-      <div class="about__photo">
-        <img src="https://via.placeholder.com/500x625" alt="Foto de Perfil">
-      </div>
-      <div>
-        <p class="eyebrow"><span class="dot">•</span> Background</p>
-        <h2 class="about__title">Generalist Approach to Game Development</h2>
-        <div class="about__text">
-          <p>Working across the entire creative pipeline, I model 3D assets, design game systems, draw concept art, and build clean interfaces.</p>
-          <p>My generalist approach gives me a holistic view of game development, connecting art, logic, and delivery to make smarter, more intentional production choices.</p>
-        </div>
+        <!-- PROJETO 4 (destaque) -->
+        <button type="button" class="card card--wide" data-category="3D"
+          data-title="3D-Modeling" data-role="3D" data-year="2025"
+          data-desc="Sniper weapon modelled in Blender and painting using Uccupaint AddOn"
+          data-tags="Blender"
+          data-image="images/Sniper_Corporate.png">
+          <div class="card__media card__media--wide">
+            <img src="images/Sniper_Corporate.png" alt="3D-Game Asset" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Scavenger Sniper</h3>
+              <p class="card__role">3D modeling</p>
+            </div>
+            <span class="card__tag">3D &middot; 2026</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 5 -->
+        <button type="button" class="card" data-category="3D Model"
+          data-title="Low Poly" data-role="3D render illustration" data-year="2016"
+          data-desc="Low Poly 3D of a planet for a campaign"
+          data-tags="Blender"
+          data-image="images/Scenary_8.png">
+          <div class="card__media">
+            <img src="images/Scenary_8.png" alt="Low Poly" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Low Poly</h3>
+              <p class="card__role">3D render illustration</p>
+            </div>
+            <span class="card__tag">3D Model &middot; 2016</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 6 -->
+        <button type="button" class="card" data-category="3D Model"
+          data-title="Low Poly" data-role="3D render illustration" data-year="2016"
+          data-desc="3D model render to use for a document support"
+          data-tags="Blender"
+          data-image="images/Scenary_1.png">
+          <div class="card__media">
+            <img src="images/Scenary_1.png" alt="Low Poly" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Low Poly</h3>
+              <p class="card__role">3D render illustration</p>
+            </div>
+            <span class="card__tag">3D Model &middot; 2016</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 7 (destaque) -->
+        <button type="button" class="card card--wide" data-category="pixel Art"
+          data-title="Pixel art" data-role="Illustration" data-year="2019"
+          data-desc="Pixel Art Urban tribes"
+          data-tags="Photoshop"
+          data-image="images/StreetPixelArt_1.png">
+          <div class="card__media card__media--wide">
+            <img src="images/StreetPixelArt_1.png" alt="pixel art - Punks" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art</h3>
+              <p class="card__role">Illustration</p>
+            </div>
+            <span class="card__tag">Illustration &middot; 2019</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 8 -->
         
-        <div class="about__skills">
-          <p class="eyebrow">Tools</p>
-          <ul class="tags">
-            <li>Blender</li>
-            <li>Unity</li>
-            <li>Figma</li>
-            <li>Illustrator</li>
-            <li>Photoshop</li>
-            <li>Affinity</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECÇÃO EXPERIÊNCIA -->
-  <section class="section" id="experience">
-    <div class="exp">
-      <p class="eyebrow"><span class="dot">•</span> Professional Progress</p>
-      <h2 class="section__title">Experience & Formation</h2>
-
-      <div class="exp__list">
-        <div class="exp__item">
-          <span class="exp__period">2017 — 2026</span>
-          <div class="exp__detail">
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Pixel art" data-role="Illustration" data-year="2019"
+          data-desc="Pixel Art Urban tribes"
+          data-tags="Photoshop"
+          data-image="images/StreetPixelArt_4.png">
+          <div class="card__media card__media--wide">
+            <img src="images/StreetPixelArt_4.png" alt="pixel art - Hip Hop" />
+          </div>
+          <div class="card__meta">
             <div>
-              <h3>General Artist & Game Designer</h3>
-              <p class="exp__company">Block Bastards</p>
+              <h3 class="card__title">Pixel Art</h3>
+              <p class="card__role">Illustration</p>
             </div>
-            <p class="exp__desc">Game Design, 3D modeling, UI design e desenvolvimento visual para projetos interativos.</p>
+            <span class="card__tag">Illustration &middot; 2019</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 9 -->
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Pixel art" data-role="Illustration" data-year="2019"
+          data-desc="Pixel Art Urban tribes - Skateboarding"
+          data-tags="Photoshop"
+          data-image="images/StreetPixelArt_2.png">
+          <div class="card__media card__media--wide">
+            <img src="images/StreetPixelArt_2.png" alt="pixel art" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art</h3>
+              <p class="card__role">Illustration</p>
+            </div>
+            <span class="card__tag">Illustration &middot; 2019</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 10 -->
+        
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Pixel art" data-role="Illustration" data-year="2019"
+          data-desc="Family Portrait"
+          data-tags="Photoshop"
+          data-image="images/FamilyPortraits_1.png">
+          <div class="card__media card__media--wide">
+            <img src="images/FamilyPortraits_1.png" alt="pixel art" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art</h3>
+              <p class="card__role">Illustration</p>
+            </div>
+            <span class="card__tag">Illustration &middot; 2019</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 11 -->
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Pixel art" data-role="Illustration" data-year="2019"
+          data-desc="Family Portrait"
+          data-tags="Photoshop"
+          data-image="images/FamilyPortraits_2.png">
+          <div class="card__media card__media--wide">
+            <img src="images/FamilyPortraits_2.png" alt="pixel art" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art</h3>
+              <p class="card__role">Illustration</p>
+            </div>
+            <span class="card__tag">Illustration &middot; 2019</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 12 (destaque) -->
+        <button type="button" class="card card--wide" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/MoneyLords_GameDev_06.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/MoneyLords_GameDev_06.gif" alt="pixel art - Environment and Light in Unity" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 13 -->
+        
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/MoneyLords_GameDev_10.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/MoneyLords_GameDev_10.gif" alt="pixel art - Environment and Light in Unity" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 14 -->
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/MoneyLords_GameDev_08.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/MoneyLords_GameDev_08.gif" alt="pixel art - Environment and Light in Unity" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 15 -->
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/HERO_Drawn.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/HERO_Drawn.gif" alt="pixel art - Animation" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 15 -->
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/HERO_Shooting.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/HERO_Shooting.gif" alt="pixel art - Animation" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 16 -->
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/Player_FiringAimRest_WalkGun_Walk_Idle.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/Player_FiringAimRest_WalkGun_Walk_Idle.gif" alt="pixel art - Animation" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 17 -->
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/HERO_Dying_Sketchs_a.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/HERO_Dying_Sketchs_a.gif" alt="pixel art - Animation" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 17 -->        
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/Player_DeathAnimations_Pixel.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/Player_DeathAnimations_Pixel.gif" alt="pixel art - Animation" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+        <!-- PROJETO 18 -->
+        <button type="button" class="card" data-category="pixel Art"
+          data-title="Money Lords" data-role="Pixel Art, Animation, Game Design, implementation" data-year="2019"
+          data-desc="Concepts, pixel art, animation, game design, Unity implementation and coding"
+          data-tags="Photoshop and Unity"
+          data-image="images/Enemies_Anim_Mech01_Sketch03.gif">
+          <div class="card__media card__media--wide">
+            <img src="images/Enemies_Anim_Mech01_Sketch03.gif" alt="pixel art - Animation" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Pixel Art Environment</h3>
+              <p class="card__role">Environment</p>
+            </div>
+            <span class="card__tag">Environment &middot; 2018</span>
+          </div>
+        </button>
+
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SOBRE MIM                                                    -->
+    <!-- ============================================================ -->
+    <section id="about" class="section">
+      <div class="about">
+        <div class="about__photo">
+          <!-- A TUA FOTO: substitui images/portrait.png -->
+          <img src="images/AKhan74.png" alt="Self portrait pixel art" height="400" />
+        </div>
+
+        <div class="about__body">
+          <p class="eyebrow">About me</p>
+          <h2 class="about__title">One creative mind, connected across disciplines.</h2>
+
+          <div class="about__text">
+            <p>
+              Working across the entire creative pipeline, I model 3D assets, design game systems, draw concept art, and build clean interfaces.
+            </p>
+            <p>
+              My generalist approach gives me a holistic view of game development, connecting art, logic, and delivery to make smarter, more intentional production choices.
+            </p>
+          </div>
+
+          <div class="about__skills">
+            <p class="eyebrow">Tools</p>
+            <ul class="tags">
+              <li>Blender</li>
+              <li>Unity</li>
+              <li>Figma</li>
+              <li>Illustrator</li>
+              <li>Photoshop</li>
+              <li>Affinity</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECÇÃO CONTACTO -->
-  <section class="section" id="contact">
-    <div class="contact">
-      <div>
-        <p class="eyebrow"><span class="dot">•</span> Get in touch</p>
-        <h2 class="contact__title">Let's build something together.</h2>
-        <a href="mailto:teuemail@exemplo.com" class="contact__email">
-          teuemail@exemplo.com <span class="arrow">↗</span>
-        </a>
+    <!-- ============================================================ -->
+    <!-- PERCURSO / EXPERIÊNCIA                                       -->
+    <!-- ============================================================ -->
+    <section id="experience" class="section">
+      <div class="exp">
+        <p class="eyebrow">Profesisonal progress</p>
+        <h2 class="section__title">Experience &amp; formation</h2>
+
+        <ul class="exp__list">
+          <li class="exp__item">
+            <span class="exp__period">2017 — 2026</span>
+            <div class="exp__detail">
+              <div>
+                <h3>General artist & Game Designer</h3>
+                <p class="exp__company">Block Bastards</p>
+              </div>
+              <p class="exp__desc">Game Design, 3D modeling, UI/UX Design, Illustration, Concept Art, Animation, Video Editing</p>
+            </div>
+          </li>
+          <li class="exp__item">
+            <span class="exp__period">2014 — Present</span>
+            <div class="exp__detail">
+              <div>
+                <h3>3D Artist &amp; Game Designer</h3>
+                <p class="exp__company">In Pixel We Trust games</p>
+              </div>
+              <p class="exp__desc">Solo/Core Developer — V8ORS-Flying Rat & Ace of Space. Responsible for all 3D assets, UI design, concept art, and primary code implementation.</p>
+            </div>
+          </li>
+          <li class="exp__item">
+            <span class="exp__period">1998 — 2024</span>
+            <div class="exp__detail">
+              <div>
+                <h3>Licenciatura em Design</h3>
+                <p class="exp__company">Universidade de Aveiro</p>
+              </div>
+              <p class="exp__desc">Years after putting my studies on hold, I returned to university at 50 to graduate.</p>
+            </div>
+          </li>
+        </ul>
       </div>
+    </section>
 
-      <div class="socials">
-        <a href="#" target="_blank" rel="noopener">
-          <span class="socials__label">LinkedIn</span>
-          <span class="socials__handle">/in/oteunome <span class="arrow">↗</span></span>
-        </a>
-        <a href="#" target="_blank" rel="noopener">
-          <span class="socials__label">ArtStation</span>
-          <span class="socials__handle">@oteunome <span class="arrow">↗</span></span>
-        </a>
+    <!-- ============================================================ -->
+    <!-- CONTACTO                                                     -->
+    <!-- ============================================================ -->
+    <section id="contact" class="section">
+      <div class="contact">
+        <div class="contact__left">
+          <p class="eyebrow">Contacts</p>
+          <h2 class="contact__title">Let's build something</h2>
+          <!-- O TEU EMAIL -->
+          <a href="mailto:ola@ruimarques.com" class="contact__email">
+            deivis@akhan74.com
+            <span class="arrow" aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+
+        <!-- AS TUAS REDES: muda o href e o texto -->
+        <ul class="socials">
+          <li>
+            <a href="https://www.instagram.com/deivis_tavares/" target="_blank" rel="noopener noreferrer">
+              <span class="socials__label">Instagram</span>
+              <span class="socials__handle">@deivis_tavares <span class="arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.artstation.com/akhan74" target="_blank" rel="noopener noreferrer">
+              <span class="socials__label">ArtStation</span>
+              <span class="socials__handle">akhan74 <span class="arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/deivis/" target="_blank" rel="noopener noreferrer">
+              <span class="socials__label">LinkedIn</span>
+              <span class="socials__handle">in/deivis <span class="arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.behance.net/akhan74" target="_blank" rel="noopener noreferrer">
+              <span class="socials__label">Behance</span>
+              <span class="socials__handle">akhan74 <span class="arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- RODAPÉ -->
-  <footer class="footer">
-    <p>© 2026 O Teu Nome. Todos os direitos reservados.</p>
-  </footer>
+    <!-- RODAPÉ -->
+    <footer class="footer">
+      <p>&copy; 2026 AKhan74</p>
+      <p>Made with Love &middot; Planet Earth</p>
+    </footer>
 
-  <!-- LIGHTBOX -->
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- LIGHTBOX (janela de detalhe do projeto) — não precisa editar -->
+  <!-- ============================================================ -->
   <div class="lightbox" id="lightbox" hidden>
     <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Fechar">&times;</button>
-    <div class="lightbox__inner">
+    <div class="lightbox__inner" id="lightboxInner">
       <div class="lightbox__media">
-        <img id="lbImage" src="" alt="Projeto">
+        <img id="lbImage" src="" alt="" />
       </div>
       <div class="lightbox__body">
-        <span class="lightbox__category" id="lbCategory">Categoria</span>
-        <h3 class="lightbox__title" id="lbTitle">Título</h3>
-        
+        <p class="lightbox__category" id="lbCategory"></p>
+        <h3 class="lightbox__title" id="lbTitle"></h3>
         <dl class="lightbox__facts">
           <div>
-            <dt>Role</dt>
-            <dd id="lbRole">Role</dd>
+            <dt>Função</dt>
+            <dd id="lbRole"></dd>
           </div>
           <div>
-            <dt>Year</dt>
-            <dd id="lbYear">2026</dd>
+            <dt>Ano</dt>
+            <dd id="lbYear"></dd>
           </div>
         </dl>
-
-        <p class="lightbox__desc" id="lbDesc">Descrição do projeto...</p>
+        <p class="lightbox__desc" id="lbDesc"></p>
         <div class="tags tags--mono" id="lbTags"></div>
       </div>
     </div>
   </div>
-
-  <!-- JAVASCRIPT INLINE -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Menu Mobile Toggle
-      const navToggle = document.getElementById('navToggle');
-      const navMobile = document.getElementById('navMobile');
-
-      if (navToggle && navMobile) {
-        navToggle.addEventListener('click', () => {
-          const isOpen = navMobile.classList.toggle('is-open');
-          navToggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        navMobile.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            navMobile.classList.remove('is-open');
-            navToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-
-      // 2. Filtros do Portefólio
-      const filterButtons = document.querySelectorAll('.filter');
-      const cards = document.querySelectorAll('.card');
-
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          filterButtons.forEach(btn => btn.classList.remove('is-active'));
-          button.classList.add('is-active');
-
-          const filterValue = button.getAttribute('data-filter').toLowerCase();
-
-          cards.forEach(card => {
-            const category = (card.getAttribute('data-category') || '').toLowerCase();
-            if (filterValue === 'todos' || category.includes(filterValue)) {
-              card.style.display = 'block';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
-
-      // 3. Lightbox
-      const lightbox = document.getElementById('lightbox');
-      const lightboxClose = document.getElementById('lightboxClose');
-      const lbImage = document.getElementById('lbImage');
-      const lbCategory = document.getElementById('lbCategory');
-      const lbTitle = document.getElementById('lbTitle');
-      const lbRole = document.getElementById('lbRole');
-      const lbYear = document.getElementById('lbYear');
-      const lbDesc = document.getElementById('lbDesc');
-      const lbTags = document.getElementById('lbTags');
-
-      cards.forEach(card => {
-        card.addEventListener('click', (e) => {
-          // Evita abrir o lightbox se o clique tiver sido num botão interno
-          if (e.target.closest('button')) return;
-
-          lbImage.src = card.getAttribute('data-image') || '';
-          lbCategory.textContent = card.getAttribute('data-category') || '';
-          lbTitle.textContent = card.getAttribute('data-title') || '';
-          lbRole.textContent = card.getAttribute('data-role') || '';
-          lbYear.textContent = card.getAttribute('data-year') || '';
-          lbDesc.textContent = card.getAttribute('data-desc') || '';
-          
-          lbTags.innerHTML = '';
-          const tags = (card.getAttribute('data-tags') || '').split(',');
-          tags.forEach(tag => {
-            if(tag.trim()) {
-              const span = document.createElement('span');
-              span.textContent = tag.trim();
-              lbTags.appendChild(span);
-            }
-          });
-
-          lightbox.removeAttribute('hidden');
-        });
-      });
-
-      if (lightboxClose) {
-        lightboxClose.addEventListener('click', () => {
-          lightbox.setAttribute('hidden', '');
-        });
-      }
-
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-          lightbox.setAttribute('hidden', '');
-        }
-      });
-
-      // 4. Lógica do Botão "See More" (Dinâmica e Segura)
-      document.querySelectorAll('.btn-see-more').forEach(button => {
-        button.addEventListener('click', () => {
-          const targetId = button.getAttribute('data-target');
-          const content = document.getElementById(targetId);
-          const textSpan = button.querySelector('span');
-
-          if (!content) {
-            console.warn(`Container com o ID "${targetId}" não foi encontrado.`);
-            return;
-          }
-
-          if (content.hasAttribute('hidden')) {
-            content.removeAttribute('hidden');
-            button.classList.add('is-expanded');
-            if (textSpan) textSpan.textContent = 'See Less';
-          } else {
-            content.setAttribute('hidden', '');
-            button.classList.remove('is-expanded');
-            if (textSpan) textSpan.textContent = 'See More';
-          }
-        });
-      });
-    });
-  </script>
 
 </body>
 </html>
