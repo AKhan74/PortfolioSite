@@ -300,7 +300,7 @@ ul {
 }
 
 .filter {
-  border: 1px solid var(--border);
+  border: 1px solid #efa555; /* Borda laranja no estado normal */
   border-radius: 999px;
   padding: 0.375rem 1rem;
   background: none;
@@ -315,13 +315,13 @@ ul {
 
 .filter:hover {
   color: var(--foreground);
-  border-color: color-mix(in oklch, var(--foreground) 40%, transparent);
+  border-color: #efa555; /* Mantém ou realça a borda laranja ao passar o rato */
 }
 
 .filter.is-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-foreground);
+  background: #efa555; /* Preenchimento laranja quando ativo */
+  border-color: #efa555;
+  color: #000; /* Cor do texto quando ativo (ajusta se preferires branco ou outra cor) */
 }
 
 /* ============================================================
