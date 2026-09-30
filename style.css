@@ -885,4 +885,19 @@ ul {
   .lightbox__inner {
     grid-template-columns: 1.4fr 1fr;
   }
+   /* Garante que o bloco de introdução ocupa toda a largura da grelha */
+.section__intro {
+  grid-column: 1 / -1;
+  margin-bottom: 1.5rem;
+}
+
+   /* Estilo opcional para o texto descritivo */
+.section__desc {
+  color: var(--text-muted, #a0a0a0); /* Ajusta a cor para o tom do teu tema */
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 65ch; /* Limita a largura de leitura para melhor legibilidade */
+  margin-top: 0.5rem;
+}
+
 }
