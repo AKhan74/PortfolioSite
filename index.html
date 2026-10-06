@@ -1000,6 +1000,33 @@
       if (arrow) arrow.innerHTML = '&darr;';
     }
   }
+  function openImageModal(card) {
+  const modal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('modal-img');
+  const caption = document.getElementById('modal-caption');
+
+  // Vai buscar o caminho da imagem e a descrição dos atributos data-
+  const imgSrc = card.getAttribute('data-image');
+  const desc = card.getAttribute('data-desc') || card.getAttribute('data-title');
+
+  modalImg.src = imgSrc;
+  caption.textContent = desc;
+
+  modal.classList.add('active');
+}
+
+function closeImageModal() {
+  const modal = document.getElementById('image-modal');
+  modal.classList.remove('active');
+}
+
+// Permite fechar a imagem ao premir a tecla ESC
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeImageModal();
+  }
+});
+  
 </script>
 
   <!-- Modal para Imagem Ampliada -->
