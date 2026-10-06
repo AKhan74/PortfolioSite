@@ -1370,10 +1370,10 @@
       </div>
     </section>
 
-    <footer class="footer">
-      <p>&copy; 2026 AKhan74</p>
-      <p>Made with Love &middot; Planet Earth</p>
-    </footer>
+   <footer class="footer">
+  <p>&copy; <span id="current-year"></span> AKhan74</p>
+  <p>Made with Love &middot; Planet Earth</p>
+</footer>
 
   </main>
 
@@ -1403,6 +1403,9 @@
   </div>
 
 <script>
+  // Atualiza o ano do footer automaticamente com o ano atual do sistema
+document.getElementById('current-year').textContent = new Date().getFullYear();
+  
   function toggleProjectExtra(targetId, btn) {
     const targetDiv = document.getElementById(targetId);
     if (!targetDiv) return;
