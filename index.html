@@ -169,6 +169,24 @@
   </div>
 
         <button type="button" class="card card--wide" data-category="3D"
+          data-title="Military Unit" data-role="3D print" data-year="2024"
+          data-desc="Several Military Units miniatures modeled for tabletop gaming."
+          data-tags="Blender"
+          data-image="images/3D_Print_01.png"
+      onclick="openImageModal(this)">
+          <div class="card__media">
+            <img src="images/3D_Print_01.png" alt="Military Unit" />
+          </div>
+          <div class="card__meta">
+            <div>
+              <h3 class="card__title">Military Unit</h3>
+              <p class="card__role">Miniature poses</p>
+            </div>
+            <span class="card__tag">3D Print &middot; 2024</span>
+          </div>
+        </button>
+
+        <button type="button" class="card" data-category="3D"
           data-title="Corporate Unit" data-role="3D print" data-year="2024"
           data-desc="Mech Unit miniature modeled for tabletop gaming."
           data-tags="Blender"
@@ -200,9 +218,11 @@
               <h3 class="card__title">Container</h3>
               <p class="card__role">Wargame/RPG Terrains</p>
             </div>
-            <span class="card__tag">3D Model &middot; 2025</span>
+            <span class="card__tag">3D Print &middot; 2025</span>
           </div>
         </button>
+
+        <div id="project-11-extra" class="project-extra" hidden>
 
         <button type="button" class="card" data-category="3D Print"
           data-title="Container" data-role="Wargame/RPG Terrains" data-year="2025"
@@ -218,9 +238,17 @@
               <h3 class="card__title">Modular Buildings</h3>
               <p class="card__role">Wargame/RPG Terrains</p>
             </div>
-            <span class="card__tag">3D Model &middot; 2025</span>
+            <span class="card__tag">3D Print &middot; 2025</span>
           </div>
         </button>
+        </div>
+
+        <div class="see-more-wrapper">
+          <button type="button" class="btn-see-more" onclick="toggleProjectExtra('project-11-extra', this)">
+            <span>See More</span>
+            <span class="arrow">&darr;</span>
+          </button>
+        </div>
 
       <!-- Pixel Art -> Street pixels  -->
      <!-- Bloco do Título e Descrição antes da Grid -->
