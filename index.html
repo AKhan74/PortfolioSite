@@ -99,7 +99,7 @@
   <div class="section__intro">
     <h2 class="section__title">Weapons</h2>
     <p class="section__desc">
-      Some weapons I've made to improve my 3D painting and modelling.
+      3D models made to improve my skills.
     </p>
   </div>
 
@@ -107,6 +107,24 @@
   <div class="grid" id="grid">
 
     <button type="button" class="card card--wide" data-category="3D"
+      data-title="Modeling and Painting" data-role="3D" data-year="2025"
+      data-desc="Cyber punk building modeled and hand painted"
+      data-tags="Blender"
+      data-image="images/Painted_BuildingSciFi_1.gif"
+      onclick="openImageModal(this)">
+      <div class="card__media card__media--wide">
+        <img src="images/Painted_BuildingSciFi_1.gif" alt="3D-Game Asset" />
+      </div>
+      <div class="card__meta">
+        <div>
+          <h3 class="card__title">Cyber Punk building</h3>
+          <p class="card__role">3D modeling</p>
+        </div>
+        <span class="card__tag">3D &middot; 2026</span>
+      </div>
+    </button>
+
+    <button type="button" class="card" data-category="3D"
       data-title="3D-Modeling" data-role="3D" data-year="2025"
       data-desc="Assault rifle modelled in Blender and painting using Uccupaint AddOn."
       data-tags="Blender"
@@ -123,6 +141,26 @@
         <span class="card__tag">3D &middot; 2026</span>
       </div>
     </button>
+
+    <button type="button" class="card" data-category="3D"
+      data-title="Modeling and Painting" data-role="3D" data-year="2025"
+      data-desc="Sci Fi generator modeled and hand painted"
+      data-tags="Blender"
+      data-image="images/Painted_Generator.gif"
+      onclick="openImageModal(this)">
+      <div class="card__media card__media--wide">
+        <img src="images/Painted_Generator.gif" alt="3D-Game Asset" />
+      </div>
+      <div class="card__meta">
+        <div>
+          <h3 class="card__title">Cyber Punk building</h3>
+          <p class="card__role">3D modeling</p>
+        </div>
+        <span class="card__tag">3D &middot; 2026</span>
+      </div>
+    </button>
+
+        <div id="project-13-extra" class="project-extra" hidden>
 
         <button type="button" class="card" data-category="3D"
           data-title="3D-Modeling" data-role="3D" data-year="2025"
@@ -159,6 +197,14 @@
             <span class="card__tag">3D &middot; 2026</span>
           </div>
         </button>
+        </div>
+
+        <div class="see-more-wrapper">
+          <button type="button" class="btn-see-more" onclick="toggleProjectExtra('project-12-extra', this)">
+            <span>See More</span>
+            <span class="arrow">&darr;</span>
+          </button>
+        </div>
 
       <!-- 3D printing - 3D modelling  -->
      <!-- Bloco do Título e Descrição antes da Grid -->
