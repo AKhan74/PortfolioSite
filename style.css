@@ -70,6 +70,29 @@ ul {
   color: var(--accent);
   margin-right: 0.25rem;
 }
+/* 1. Bloqueia scroll horizontal global no body e html */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2. Ajusta as disciplinas para quebrar linha suavemente em ecrãs pequenos */
+.hero__disciplines {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem; /* Reduzido o espaço entre itens */
+  width: 100%;
+}
+
+/* 3. Permite que títulos longos reduzam de tamanho e quebrem linha no mobile */
+.hero__title {
+  font-size: clamp(2rem, 8vw, 6rem); /* Baixado o tamanho mínimo de 3rem para 2rem */
+  word-break: break-word;
+}
+
+.section__title {
+  word-break: break-word;
+}
 
 /* ============================================================
    NAVEGAÇÃO
